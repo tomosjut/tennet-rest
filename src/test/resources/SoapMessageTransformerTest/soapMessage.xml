@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+    <soap:Header>
+        <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
+            <wsse:BinarySecurityToken ValueType="http://schemas.xmlsoap.org/ws/2002/12/secext#X509v3" EncodingType="http://schemas.xmlsoap.org/ws/2002/12/secext#Base64Binary" wsse:Id="MyPublicKeyToken">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGxXbWo6ErlTeGcvIGC+nPRdB/g9fa81J0AMuxTBnPi24uhcpx0qvEdWNnUM51D7P/8DQo4d/INXpLWSBBD8Q2ScJ5jtVAbMClc7/6aeA6CPPq1eEcyg0m5AEZ6wBWxnI33gVJH2PEU2MWLb5Jk2KZb5J7CuHqxrcy2xbupI2LsnoQtbwKMkPg2ABwCUhrLLKkyJLLnco59uEJ5wQqcLzfb9nYZJ6BcJ25SFp0ywfb5tWvg7VsrSUq//QfccFaQiO5Cxhez4TwEu6nTbM5Jw453RtvO1QEzgTzZV2XlBz+idt1Gk5LT1QRU30I5C8aF73A2xfRUMH0/wAIuqT/FKMwIDAQAB</wsse:BinarySecurityToken>
+            <wsse:BinarySecurityToken ValueType="http://schemas.xmlsoap.org/ws/2002/12/secext#X509v3" EncodingType="http://schemas.xmlsoap.org/ws/2002/12/secext#Base64Binary" wsse:Id="X509Token">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGxXbWo6ErlTeGcvIGC+nPRdB/g9fa81J0AMuxTBnPi24uhcpx0qvEdWNnUM51D7P/8DQo4d/INXpLWSBBD8Q2ScJ5jtVAbMClc7/6aeA6CPPq1eEcyg0m5AEZ6wBWxnI33gVJH2PEU2MWLb5Jk2KZb5J7CuHqxrcy2xbupI2LsnoQtbwKMkPg2ABwCUhrLLKkyJLLnco59uEJ5wQqcLzfb9nYZJ6BcJ25SFp0ywfb5tWvg7VsrSUq//QfccFaQiO5Cxhez4TwEu6nTbM5Jw453RtvO1QEzgTzZV2XlBz+idt1Gk5LT1QRU30I5C8aF73A2xfRUMH0/wAIuqT/FKMwIDAQAB</wsse:BinarySecurityToken>
+        </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <getMessageRequest xmlns="http://sys.svc.tennet.nl/MMCHub/v1">
+
+            <technicalMessageId>Test123</technicalMessageId>
+
+        </getMessageRequest>
+        <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>4oX/f/rq1fHNADgmLZVYsbPUAktp22OBo1bhd1TjFIQ=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>HV7Z5a9KA2QTo3+5vb9hSJmgM6GmFS/1OECRGvv+CxAkHBSZutdok+EPlTjcLtUFR1ycOQa3grPi&#13;
+            OwyVldqiIaYQxOFotSR9VKIUjC8dqbKATt2rwVspO8maZrXyHjCwW348rzTnMbJPubW/sJ/FQrG4&#13;
+            +n0mFil3MJTDgPTOnil2WghO8VhqE/xWJWhmiGRYAoVeJ9AnDR87yndY8lQVeYR+xT00IjxmzjDq&#13;
+            c0DyLWrlvcaYIL9x26vRLrKSKhjIc/Qm55IRVvi9FdrI5D+sNwM4yN26yfnCJlK0WWcU2DCIktuU&#13;
+            7uRaGhYTQ6UVBlRQWklvYVO5/Mf+TJ+/5J8bGw==</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509SubjectName>CN=localhost,O=DanteIT,L=Utrecht,ST=Utrecht,C=NL</ds:X509SubjectName><ds:X509Certificate>MIIDOjCCAiKgAwIBAgIUUdpQWUOSYlJBw+P0+pEBlJTkwWwwDQYJKoZIhvcNAQELBQAwVzELMAkG&#13;
+            A1UEBhMCTkwxEDAOBgNVBAgMB1V0cmVjaHQxEDAOBgNVBAcMB1V0cmVjaHQxEDAOBgNVBAoMB0Rh&#13;
+            bnRlSVQxEjAQBgNVBAMMCWxvY2FsaG9zdDAeFw0yNTAxMjMyMDQwMDdaFw0yNjAxMjMyMDQwMDda&#13;
+            MFcxCzAJBgNVBAYTAk5MMRAwDgYDVQQIDAdVdHJlY2h0MRAwDgYDVQQHDAdVdHJlY2h0MRAwDgYD&#13;
+            VQQKDAdEYW50ZUlUMRIwEAYDVQQDDAlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw&#13;
+            ggEKAoIBAQCsbFdtajoSuVN4Zy8gYL6c9F0H+D19rzUnQAy7FMGc+Lbi6FynHSq8R1Y2dQznUPs/&#13;
+            /wNCjh38g1ektZIEEPxDZJwnmO1UBswKVzv/pp4DoI8+rV4RzKDSbkARnrAFbGcjfeBUkfY8RTYx&#13;
+            YtvkmTYplvknsK4erGtzLbFu6kjYuyehC1vAoyQ+DYAHAJSGsssqTIksudyjn24QnnBCpwvN9v2d&#13;
+            hknoFwnblIWnTLB9vm1a+DtWytJSr/9B9xwVpCI7kLGF7PhPAS7qdNszknDjndG287VATOBPNlXZ&#13;
+            eUHP6J23UaTktPVBFTfQjkLxoXvcDbF9FQwfT/AAi6pP8UozAgMBAAEwDQYJKoZIhvcNAQELBQAD&#13;
+            ggEBABqy4aBDTJq9K1u/OSB6IQvyI5g+RESMfI9sc5kTUMgHZ/PfiPHLYGJEQ8Fau0ESIfuc3CzR&#13;
+            GsuguCZWXK9HLlwoJfAo8oRpsTHCdoPGmGhRszxaEVsufWiuli2xWfigjMoBHsTMQVrfsUJWCTrs&#13;
+            pRU7RQiKQP70T8z14um3W8rqDpxVsMXHQsRTroApJyYZD161LJ23ggKvTmwhmy0jm8SQpH6T1vuk&#13;
+            ygy5lrkyMCTgTkMl47R3dfT527EtzkTG3I63vj103HLwSWPu6nh2VK5RXRGSrcps8LMvSqhz1Bxw&#13;
+            SF+MJ0bD+q0CxCXK4GcEhH8gFo1s50aD+PY5GOmtOk0=</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature>
+        <xenc:EncryptedKey>
+            <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5"/>
+            <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <wsse:SecurityTokenReference>
+                    <wsse:Reference URI="#X509Token"/>
+                </wsse:SecurityTokenReference>
+            </ds:KeyInfo>
+            <xenc:CipherData>
+                <xenc:CipherValue>G6So/e1MUDL4ainN+mexJxfsnVtnmV/c10IcWAYAvy+UfN+MiKQ+c0OA2Q9tYCqijyvt31VWRPhxxqDnH3GisgJtyPXbM7HLwiVoyltT7WrIoHgUXxxRTd37fUn0dh8dM8X1sgGXfE5F8wMVKvicUWi0fnVbnGcJYWgNMTVPFubKAlukd7+sarVPO9Z66fR7sLPDZFQtF71g+43TrxDbtJfo11X3mtbOnUjVxUO9J4VfPGu19ahCeoU1D8LWxMSCn0InOreuJzdC0FN237gRzvlR6l4LSG6rPXewTtMkKLVRf1sdAtawv/RerUI/uH4MAk9pfhEyF2Df9o/CpWArpA==</xenc:CipherValue>
+            </xenc:CipherData>
+        </xenc:EncryptedKey>
+    </soap:Body>
+</soap:Envelope>
