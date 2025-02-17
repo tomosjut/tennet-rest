@@ -42,10 +42,28 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- resteasy-->
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-rest</artifactId>
+            <artifactId>quarkus-resteasy-jackson</artifactId>
         </dependency>
+
+        <!-- For Java 8 Date/Time support (LocalDateTime etc) -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+<!--            <version>2.16.1</version>-->
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.quarkus/quarkus-resteasy-jaxb -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-jaxb</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
@@ -73,6 +91,11 @@
         <dependency>
             <groupId>com.faradaytrading</groupId>
             <artifactId>tennet-soap</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.faradaytrading</groupId>
+            <artifactId>tennet-wsdl</artifactId>
             <version>1.0.0</version>
         </dependency>
 
