@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 import java.util.UUID;
 
 @ApplicationScoped
-@Path("/balancingmarketdocument")
+@Path("/settlement")
 public class BalancingMarketDocumentResource {
 
 
@@ -57,9 +57,8 @@ public class BalancingMarketDocumentResource {
         try {
             IsAliveRequestMessage isAliveRequestMessage = isAliveTransformer.createIsAliveRequestMessage();
             LOGGER.info("RequestMessage: {}", XmlUtils.marshal(isAliveRequestMessage, IsAliveRequestMessage.class));
-            IsAliveResponseMessage isAliveResponseMessage = sendBalancingService.isAlive(isAliveRequestMessage);
-            String xml = XmlUtils.marshal(isAliveResponseMessage, IsAliveResponseMessage.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
+            String response = sendBalancingService.isAlive(isAliveRequestMessage);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e){
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();
         }
@@ -76,20 +75,14 @@ public class BalancingMarketDocumentResource {
 
         try {
 
-            carrierId = "8720844058549";
-            senderId = "8720844058549";
-            receiverId = "8716867111163";
-
-
             String technicalMessageId = UUID.randomUUID().toString();
             String contentType = "AGGREGATED_IMBALANCE_INFORMATION";
             String correlationId = UUID.randomUUID().toString();
             BalancingMarketDocument document = new BalancingMarketDocument();//todo mapping
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
-            BalancingMarketDocumentResponse response = sendBalancingService.sendBalancingMarketDocument(document, messageAddressing);
+            String response = sendBalancingService.sendBalancingMarketDocument(document, messageAddressing);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
 
-            String xml = XmlUtils.marshal(response, BalancingMarketDocumentResponse.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
         } catch (Exception e) {
             return Response.status(500).entity(new ErrorResponse(500, e.getMessage())).build();
         }
@@ -110,10 +103,8 @@ public class BalancingMarketDocumentResource {
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
 
             LOGGER.info("RequestMessage: {}", XmlUtils.marshal(getMessageRequest, GetMessageRequest.class));
-            AcknowledgementMarketDocument response = getReportingInformationService.getAcknowledgementMarketDocument(getMessageRequest, messageAddressing);
-
-            String xml = XmlUtils.marshal(response, AcknowledgementMarketDocument.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
+            String response = getReportingInformationService.getAcknowledgementMarketDocument(getMessageRequest, messageAddressing);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e) {
             LOGGER.error("Something went wrong: {}", e.getMessage(), e);
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();

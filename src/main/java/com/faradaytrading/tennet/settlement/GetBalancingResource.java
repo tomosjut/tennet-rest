@@ -51,10 +51,9 @@ public class GetBalancingResource {
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
 
             LOGGER.info("RequestMessage: {}", XmlUtils.marshal(getMessageRequest, GetMessageRequest.class));
-            BalancingMarketDocument response = getBalancingService.getBalancingMarketDocument(getMessageRequest, messageAddressing);
+            String response = getBalancingService.getBalancingMarketDocument(getMessageRequest, messageAddressing);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
 
-            String xml = XmlUtils.marshal(response, BalancingMarketDocument.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
         } catch (Exception e) {
             LOGGER.error("Something went wrong: {}", e.getMessage(), e);
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();

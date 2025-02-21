@@ -46,9 +46,8 @@ public class ReportingInformationResource {
         try {
             IsAliveRequestMessage isAliveRequestMessage = isAliveTransformer.createIsAliveRequestMessage();
             LOGGER.info("RequestMessage: {}", XmlUtils.marshal(isAliveRequestMessage, IsAliveRequestMessage.class));
-            IsAliveResponseMessage isAliveResponseMessage = sendReportingInformationService.isAlive(isAliveRequestMessage);
-            String xml = XmlUtils.marshal(isAliveResponseMessage, IsAliveResponseMessage.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
+            String response = sendReportingInformationService.isAlive(isAliveRequestMessage);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e){
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();
         }
@@ -73,10 +72,8 @@ public class ReportingInformationResource {
             String contentType = "AGGREGATED_IMBALANCE_INFORMATION";//TODO?/???
             String correlationId = UUID.randomUUID().toString();
             nl.tennet.svc.sys.mmchub.header.v1.MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
-            ReportingInformationMarketDocumentResponse response = sendReportingInformationService.sendReportingInformation(document, messageAddressing);
-
-            String xml = XmlUtils.marshal(response, ReportingInformationMarketDocumentResponse.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
+            String response = sendReportingInformationService.sendReportingInformation(document, messageAddressing);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e) {
             return Response.status(500).entity(new ErrorResponse(500, e.getMessage())).build();
         }

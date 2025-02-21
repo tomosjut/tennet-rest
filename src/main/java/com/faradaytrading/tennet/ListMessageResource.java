@@ -19,6 +19,7 @@ import jakarta.ws.rs.core.Response;
 import nl.tennet.svc.sys.mmchub.header.v1.MessageAddressing;
 import nl.tennet.svc.sys.mmchub.v1.ListMessageMetadataRequest;
 import nl.tennet.svc.sys.mmchub.v1.ListMessageMetadataResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,9 +55,8 @@ public class ListMessageResource {
         try {
             IsAliveRequestMessage isAliveRequestMessage = isAliveTransformer.createIsAliveRequestMessage();
             LOGGER.info("RequestMessage: {}", XmlUtils.marshal(isAliveRequestMessage, IsAliveRequestMessage.class));
-            IsAliveResponseMessage isAliveResponseMessage = listMessageMetadataService.isAlive(isAliveRequestMessage);
-            String xml = XmlUtils.marshal(isAliveResponseMessage, IsAliveResponseMessage.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
+            String response = listMessageMetadataService.isAlive(isAliveRequestMessage);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e){
             LOGGER.error("Something went wrong: {}", e.getMessage(), e);
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();
@@ -69,10 +69,12 @@ public class ListMessageResource {
     public Response listMessageMetadata(@QueryParam("carrierId") String carrierId,
                                         @QueryParam("senderId") String senderId,
                                         @QueryParam("receiverId") String receiverId,
-                                        @QueryParam("contentType") String contentType){
+                                        @QueryParam("contentType") String contentType,
+                                        @QueryParam("correlationId") String correlationId){
         try {
             String technicalMessageId = UUID.randomUUID().toString();
-            String correlationId = UUID.randomUUID().toString();
+
+            correlationId = StringUtils.defaultIfBlank(correlationId, UUID.randomUUID().toString());
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId,
                     technicalMessageId,
                     contentType,
@@ -84,9 +86,8 @@ public class ListMessageResource {
             contentTypeList.add(contentType);
 
             ListMessageMetadataRequest listMessageMetadataRequest = messageRequestTransformer.createListMessageMetadataRequest(correlationId,receiverId, contentTypeList, 10);
-            ListMessageMetadataResponse listMessageMetadataResponse = listMessageMetadataService.listMessageMetadata(listMessageMetadataRequest, messageAddressing);
-            String xml = XmlUtils.marshal(listMessageMetadataResponse, ListMessageMetadataResponse.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
+            String response = listMessageMetadataService.listMessageMetadata(listMessageMetadataRequest, messageAddressing);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e){
             LOGGER.error("Something went wrong: {}", e.getMessage(), e);
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();

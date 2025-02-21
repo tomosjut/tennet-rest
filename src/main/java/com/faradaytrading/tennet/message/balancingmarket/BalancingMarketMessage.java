@@ -2,17 +2,16 @@
 package com.faradaytrading.tennet.message.balancingmarket;
 
 import com.faradaytrading.tennet.message.common.*;
-import com.faradaytrading.tennet.message.schedulemarket.TimeSeries;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import io.quarkus.vertx.runtime.jackson.InstantDeserializer;
+import io.quarkus.vertx.runtime.jackson.InstantSerializer;
 import jakarta.validation.constraints.NotNull;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,9 +54,9 @@ public class BalancingMarketMessage {
     @NotNull
     @JsonProperty
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    protected LocalDateTime createdDateTime;
+    @JsonSerialize(using = InstantSerializer.class)
+    @JsonDeserialize(using = InstantDeserializer.class)
+    protected Instant createdDateTime;
     
     @JsonProperty
     protected ActionStatus docStatus;
@@ -67,9 +66,9 @@ public class BalancingMarketMessage {
     
     @JsonProperty("allocationDecision_DateAndOrTime.dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    protected LocalDateTime allocationDecisionDateAndOrTimeDateTime;
+    @JsonSerialize(using = InstantSerializer.class)
+    @JsonDeserialize(using = InstantDeserializer.class)
+    protected Instant allocationDecisionDateAndOrTimeDateTime;
     
     @NotNull
     @JsonProperty("period.timeInterval")
@@ -313,7 +312,7 @@ public class BalancingMarketMessage {
      *     {@link String }
      *     
      */
-    public LocalDateTime getCreatedDateTime() {
+    public Instant getCreatedDateTime() {
         return createdDateTime;
     }
 
@@ -325,7 +324,7 @@ public class BalancingMarketMessage {
      *     {@link String }
      *     
      */
-    public void setCreatedDateTime(LocalDateTime value) {
+    public void setCreatedDateTime(Instant value) {
         this.createdDateTime = value;
     }
 
@@ -397,7 +396,7 @@ public class BalancingMarketMessage {
      *     {@link String }
      *     
      */
-    public LocalDateTime getAllocationDecisionDateAndOrTimeDateTime() {
+    public Instant getAllocationDecisionDateAndOrTimeDateTime() {
         return allocationDecisionDateAndOrTimeDateTime;
     }
 
@@ -409,7 +408,7 @@ public class BalancingMarketMessage {
      *     {@link String }
      *     
      */
-    public void setAllocationDecisionDateAndOrTimeDateTime(LocalDateTime value) {
+    public void setAllocationDecisionDateAndOrTimeDateTime(Instant value) {
         this.allocationDecisionDateAndOrTimeDateTime = value;
     }
 

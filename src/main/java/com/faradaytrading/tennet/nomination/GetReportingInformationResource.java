@@ -57,10 +57,8 @@ public class GetReportingInformationResource {
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
 
             LOGGER.info("RequestMessage: {}", XmlUtils.marshal(getMessageRequest, GetMessageRequest.class));
-            ReportingInformationMarketDocument response = getReportingInformationService.getReportingInformationMarketDocument(getMessageRequest, messageAddressing);
-
-            String xml = XmlUtils.marshal(response, ReportingInformationMarketDocument.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
+            String response = getReportingInformationService.getReportingInformationMarketDocument(getMessageRequest, messageAddressing);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e) {
             LOGGER.error("Something went wrong: {}", e.getMessage(), e);
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();
@@ -81,10 +79,8 @@ public class GetReportingInformationResource {
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
 
             LOGGER.info("RequestMessage: {}", XmlUtils.marshal(getMessageRequest, GetMessageRequest.class));
-            AnomalyReportMarketDocument response = getReportingInformationService.getAnomalyReportMarketDocument(getMessageRequest, messageAddressing);
-
-            String xml = XmlUtils.marshal(response, AnomalyReportMarketDocument.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
+            String response = getReportingInformationService.getAnomalyReportMarketDocument(getMessageRequest, messageAddressing);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e) {
             LOGGER.error("Something went wrong: {}", e.getMessage(), e);
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();
@@ -105,10 +101,8 @@ public class GetReportingInformationResource {
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
 
             LOGGER.info("RequestMessage: {}", XmlUtils.marshal(getMessageRequest, GetMessageRequest.class));
-            ConfirmationMarketDocument response = getReportingInformationService.getConfirmationMarketDocument(getMessageRequest, messageAddressing);
-
-            String xml = XmlUtils.marshal(response, ConfirmationMarketDocument.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
+            String response = getReportingInformationService.getConfirmationMarketDocument(getMessageRequest, messageAddressing);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e) {
             LOGGER.error("Something went wrong: {}", e.getMessage(), e);
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();
@@ -129,10 +123,8 @@ public class GetReportingInformationResource {
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
 
             LOGGER.info("RequestMessage: {}", XmlUtils.marshal(getMessageRequest, GetMessageRequest.class));
-            ConfirmationMarketDocument response = getReportingInformationService.getConfirmationMarketDocument(getMessageRequest, messageAddressing);
-
-            String xml = XmlUtils.marshal(response, ConfirmationMarketDocument.class);
-            return Response.ok(XmlUtils.prettyPrintXml(xml)).build();
+            String response = getReportingInformationService.getConfirmationMarketDocument(getMessageRequest, messageAddressing);
+            return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e) {
             LOGGER.error("Something went wrong: {}", e.getMessage(), e);
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();

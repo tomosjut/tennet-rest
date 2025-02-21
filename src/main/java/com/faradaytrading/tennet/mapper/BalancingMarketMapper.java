@@ -16,6 +16,8 @@ public class BalancingMarketMapper {
 
     ObjectFactory objectFactory = new ObjectFactory();
 
+    public enum SETTLEMENT_TYPE{};
+
     //Defaults
     private static final String TYPE = "A12";
     private static final String PROCESS_PROCESS_TYPE = "A06";
@@ -28,7 +30,6 @@ public class BalancingMarketMapper {
     private static final String AREA_DOMAIN_CODING_SCHEME = "A01";
 
     //TimeSeries Defaults
-    private static final String BUSINESS_TYPE = "A02";
     private static final String QUANTITY_MEASUREMENT_UNIT_NAME = "KWH";
     private static final String CURVE_TYPE = "A01";
 
@@ -36,10 +37,12 @@ public class BalancingMarketMapper {
     private static final String RESOLUTION = "PT15M";
 
     public BalancingMarketDocument map(BalancingMarketMessage input) throws UnrecoverableException{
+
+        //Common fields
         BalancingMarketDocument output = objectFactory.createBalancingMarketDocument();
 
         output.setMRID(UUID.randomUUID().toString());
-
+        //1..999
         output.setRevisionNumber(input.getRevisionNumber());
         output.setType(TYPE);
         output.setProcessProcessType(PROCESS_PROCESS_TYPE);
@@ -67,12 +70,15 @@ public class BalancingMarketMapper {
         areaDomainMRID.setCodingScheme(AREA_DOMAIN_CODING_SCHEME);
         output.setAreaDomainMRID(areaDomainMRID);
 
-        //TODO: map from input
-//        output.setAllocationDecisionDateAndOrTimeDateTime();
+        output.setAllocationDecisionDateAndOrTimeDateTime(input.getAllocationDecisionDateAndOrTimeDateTime());
         ESMPDateTimeInterval periodTimeInterval = objectFactory.createESMPDateTimeInterval();
         periodTimeInterval.setStart(input.getPeriodTimeInterval().getStart());
         periodTimeInterval.setEnd(input.getPeriodTimeInterval().getEnd());
         output.setPeriodTimeInterval(periodTimeInterval);
+
+        for(com.faradaytrading.tennet.message.balancingmarket.TimeSeries inputTS : input.getTimeSeries()){
+            TimeSeries timeSeries = mapTimeSeries(inputTS);
+        }
 
         for(com.faradaytrading.tennet.message.common.Reason inputR : input.getReasons()){
             output.getReasons().add(mapReason(inputR));
@@ -84,9 +90,13 @@ public class BalancingMarketMapper {
 
     private @NotNull TimeSeries mapTimeSeries(com.faradaytrading.tennet.message.balancingmarket.TimeSeries input) throws UnrecoverableException {
         TimeSeries output = objectFactory.createTimeSeries();
-
+        //Defaults across all TimeSeries
         output.setMRID(UUID.randomUUID().toString());
-        output.setBusinessType(BUSINESS_TYPE);
+        //Specific Defaults per businessType
+
+        //Mapping from input
+        String businessType = input.getBusinessType();
+        output.setBusinessType(businessType);
         output.setFlowDirectionDirection(input.getFlowDirectionDirection());
         output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
         output.setCurveType(CURVE_TYPE);
