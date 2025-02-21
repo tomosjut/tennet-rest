@@ -3,7 +3,7 @@ package com.faradaytrading.tennet.message.balancingmarket;
 
 import com.faradaytrading.tennet.message.common.AreaIDString;
 import com.faradaytrading.tennet.message.common.Reason;
-import com.faradaytrading.tennet.message.common.SeriesPeriod;
+import com.faradaytrading.tennet.message.balancingmarket.SeriesPeriod;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;

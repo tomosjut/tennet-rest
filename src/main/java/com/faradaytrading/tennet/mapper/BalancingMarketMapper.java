@@ -10,6 +10,8 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 public class BalancingMarketMapper {
@@ -77,11 +79,11 @@ public class BalancingMarketMapper {
         output.setPeriodTimeInterval(periodTimeInterval);
 
         for(com.faradaytrading.tennet.message.balancingmarket.TimeSeries inputTS : input.getTimeSeries()){
-            TimeSeries timeSeries = mapTimeSeries(inputTS);
+            output.getTimeSeries().add(mapTimeSeries(inputTS));
         }
 
         for(com.faradaytrading.tennet.message.common.Reason inputR : input.getReasons()){
-            output.getReasons().add(mapReason(inputR));
+            output.getReasons().add(createReason("Aggregated imbalance information"));
         }
 
         return output;
@@ -90,24 +92,107 @@ public class BalancingMarketMapper {
 
     private @NotNull TimeSeries mapTimeSeries(com.faradaytrading.tennet.message.balancingmarket.TimeSeries input) throws UnrecoverableException {
         TimeSeries output = objectFactory.createTimeSeries();
+        String businessType = input.getBusinessType();
         //Defaults across all TimeSeries
         output.setMRID(UUID.randomUUID().toString());
-        //Specific Defaults per businessType
-
-        //Mapping from input
-        String businessType = input.getBusinessType();
-        output.setBusinessType(businessType);
-        output.setFlowDirectionDirection(input.getFlowDirectionDirection());
-        output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
         output.setCurveType(CURVE_TYPE);
-        output.setAuctionMRID(input.getAuctionMRID());
+        //Specific Defaults per businessType
+        switch (businessType){
+            case "A02" : //Settlement Program Domestic 8.1
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.getReasons().add(createReason("Settlement Program Domestic"));
+                output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                output.setAuctionMRID(input.getAuctionMRID());
+                break;
+            case "A03" : // 8.2
+                output.getReasons().add(createReason("Settlement Program Foreign"));
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                output.setAuctionMRID(input.getAuctionMRID());
+                break;
+            case "B22" : // 8.3
+                output.getReasons().add(createReason("Regulation state"));
+                break;
+            case "B24" : // 8.4
+                output.getReasons().add(createReason("Imbalance price TenneT sells"));
+                output.setCurrencyUnitName("EUR");
+                output.setPriceMeasurementUnitName("MWH");
+                break;
+            case "B25" : // 8.5
+                output.getReasons().add(createReason("Imbalance price TenneT buys"));
+                output.setCurrencyUnitName("EUR");
+                output.setPriceMeasurementUnitName("MWH");
+                break;
+            case "A14" : // 8.6
+                output.getReasons().add(createReason("Allocation per grid area"));
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.setAuctionMRID(input.getAuctionMRID());
+                //AcquiringDomain
+                AreaIDString acquiringDomain = objectFactory.createAreaIDString();
+                acquiringDomain.setCodingScheme(input.getAcquiringDomainMRID().getCodingScheme());
+                acquiringDomain.setValue(input.getAcquiringDomainMRID().getValue());
+                output.setAcquiringDomainMRID(acquiringDomain);
+                //ConnectingDomain
+                AreaIDString connectingDomain = objectFactory.createAreaIDString();
+                connectingDomain.setCodingScheme(input.getConnectingDomainMRID().getCodingScheme());
+                connectingDomain.setValue(input.getConnectingDomainMRID().getValue());
+                output.setConnectingDomainMRID(connectingDomain);
 
-        for(com.faradaytrading.tennet.message.common.Reason inputR : input.getReasons()){
-            output.getReasons().add(mapReason(inputR));
+                output.setAuctionMRID(input.getAuctionMRID());
+                break;
+            case "A20" : // 8.7
+                output.getReasons().add(createReason("NL imbalance"));
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                output.setAuctionMRID(input.getAuctionMRID());
+                output.setCurrencyUnitName("EUR");
+                output.setPriceMeasurementUnitName("MWH");
+                break;
+            case "A19" : // 8.8
+                output.getReasons().add(createReason("Total imbalance adjustment for all relevant products"));
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                break;
+            case "A96" : // 8.9
+                output.getReasons().add(createReason("Imbalance Adjustment aFRR"));
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                break;
+            case "A97" : // 8.10, 8.11
+                output.getReasons().add(createReason("Imbalance Adjustment mFRRda specific product"));//TODO: A97 is dubbel :(
+                output.getReasons().add(createReason("Imbalance Adjustment mFRR standard product"));//TODO: A97 is dubbel :(
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                break;
+            case "A85" : // 8.12
+                output.getReasons().add(createReason("Imbalance Adjustment Redispatch (ROP, block bids)"));
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                break;
+            case "A15" : // 8.13
+                output.getReasons().add(createReason("Market Compensated Losses"));
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                break;
+            case "C28" : // 8.14
+                output.getReasons().add(createReason("Imbalance Adjustment SST"));
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                break;
+            case "B03" : // 8.15
+                output.getReasons().add(createReason("Imbalance Adjustment BRP4GOPACS"));
+                output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
+                output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                break;
+            default:
+                throw new UnrecoverableException("Unexpected businessType");
+
         }
+        //Mapping from input
+        output.setBusinessType(businessType);
 
-        for(com.faradaytrading.tennet.message.common.SeriesPeriod inputSP : input.getPeriods()){
-            output.getPeriods().add(mapSeriesPeriod(inputSP));
+        for(com.faradaytrading.tennet.message.balancingmarket.SeriesPeriod inputSP : input.getPeriods()){
+            output.getPeriods().add(mapSeriesPeriod(inputSP, businessType));
         }
 
         return output;
@@ -115,7 +200,7 @@ public class BalancingMarketMapper {
 
 
 
-    private SeriesPeriod mapSeriesPeriod(com.faradaytrading.tennet.message.common.SeriesPeriod input) throws UnrecoverableException {
+    private SeriesPeriod mapSeriesPeriod(com.faradaytrading.tennet.message.balancingmarket.SeriesPeriod input, String businessType) throws UnrecoverableException {
 
         SeriesPeriod output = objectFactory.createSeriesPeriod();
         try {
@@ -131,24 +216,42 @@ public class BalancingMarketMapper {
         timeInterval.setEnd(input.getTimeInterval().getEnd());
         output.setTimeInterval(timeInterval);
 
-        for(com.faradaytrading.tennet.message.common.Point inputP : input.getPoints()){
-            output.getPoints().add(mapPoint(inputP));
+        for(com.faradaytrading.tennet.message.balancingmarket.Point inputP : input.getPoints()){
+            output.getPoints().add(mapPoint(inputP, businessType));
         }
 
         return output;
     }
 
-    private Point mapPoint(com.faradaytrading.tennet.message.common.Point input){
-        Point point = objectFactory.createPoint();
-        point.setPosition(input.getPosition());
-        point.setQuantity(input.getQuantity());
-        return point;
+    private Point mapPoint(com.faradaytrading.tennet.message.balancingmarket.Point input, String businessType){
+        Point output = objectFactory.createPoint();
+        output.setPosition(input.getPosition());
+
+        //Quantity, doesn't apply to B22, B24 and B25
+        List<String> nonQuantityTypes = Arrays.asList("B22", "B24", "B25");
+        if(!nonQuantityTypes.contains(businessType)) {
+            output.setQuantity(input.getQuantity());
+        }
+
+        //Amount, only applies to A20(Imbalance)
+        if("A20".equals(businessType)){
+            for (com.faradaytrading.tennet.message.balancingmarket.FinancialPrice inputFP : input.getFinancialPrices()){
+                FinancialPrice financialPrice = objectFactory.createFinancialPrice();
+                financialPrice.setAmount(inputFP.getAmount());
+                financialPrice.setDirection(inputFP.getDirection());
+            }
+        }
+        //Flow direction
+        if("B22".equals(businessType)){
+            output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+        }
+        return output;
     }
 
-    private Reason mapReason(com.faradaytrading.tennet.message.common.Reason input){
+    private Reason createReason(String reasonText){
         Reason reason = objectFactory.createReason();
-        reason.setCode(input.getCode());
-        reason.setText(input.getText());
+        reason.setCode("A95");
+        reason.setText(reasonText);
         return reason;
     }
 }
