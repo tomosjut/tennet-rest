@@ -82,9 +82,7 @@ public class BalancingMarketMapper {
             output.getTimeSeries().add(mapTimeSeries(inputTS));
         }
 
-        for(com.faradaytrading.tennet.message.common.Reason inputR : input.getReasons()){
-            output.getReasons().add(createReason("Aggregated imbalance information"));
-        }
+        output.getReasons().add(createReason("Aggregated imbalance information"));
 
         return output;
     }
@@ -97,6 +95,10 @@ public class BalancingMarketMapper {
         output.setMRID(UUID.randomUUID().toString());
         output.setCurveType(CURVE_TYPE);
         //Specific Defaults per businessType
+
+        //Create optional objects
+        AreaIDString acquiringDomain = objectFactory.createAreaIDString();
+
         switch (businessType){
             case "A02" : //Settlement Program Domestic 8.1
                 output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
@@ -128,7 +130,6 @@ public class BalancingMarketMapper {
                 output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
                 output.setAuctionMRID(input.getAuctionMRID());
                 //AcquiringDomain
-                AreaIDString acquiringDomain = objectFactory.createAreaIDString();
                 acquiringDomain.setCodingScheme(input.getAcquiringDomainMRID().getCodingScheme());
                 acquiringDomain.setValue(input.getAcquiringDomainMRID().getValue());
                 output.setAcquiringDomainMRID(acquiringDomain);
@@ -145,6 +146,11 @@ public class BalancingMarketMapper {
                 output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
                 output.setFlowDirectionDirection(input.getFlowDirectionDirection());
                 output.setAuctionMRID(input.getAuctionMRID());
+                //AcquiringDomain
+                acquiringDomain.setCodingScheme(input.getAcquiringDomainMRID().getCodingScheme());
+                acquiringDomain.setValue(input.getAcquiringDomainMRID().getValue());
+                output.setAcquiringDomainMRID(acquiringDomain);
+
                 output.setCurrencyUnitName("EUR");
                 output.setPriceMeasurementUnitName("MWH");
                 break;
@@ -152,37 +158,65 @@ public class BalancingMarketMapper {
                 output.getReasons().add(createReason("Total imbalance adjustment for all relevant products"));
                 output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
                 output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                //AcquiringDomain
+                acquiringDomain.setCodingScheme(input.getAcquiringDomainMRID().getCodingScheme());
+                acquiringDomain.setValue(input.getAcquiringDomainMRID().getValue());
+                output.setAcquiringDomainMRID(acquiringDomain);
                 break;
             case "A96" : // 8.9
                 output.getReasons().add(createReason("Imbalance Adjustment aFRR"));
                 output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
                 output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                //AcquiringDomain
+                acquiringDomain.setCodingScheme(input.getAcquiringDomainMRID().getCodingScheme());
+                acquiringDomain.setValue(input.getAcquiringDomainMRID().getValue());
+                output.setAcquiringDomainMRID(acquiringDomain);
                 break;
             case "A97" : // 8.10, 8.11
                 output.getReasons().add(createReason("Imbalance Adjustment mFRRda specific product"));//TODO: A97 is dubbel :(
                 output.getReasons().add(createReason("Imbalance Adjustment mFRR standard product"));//TODO: A97 is dubbel :(
                 output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
                 output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                //AcquiringDomain
+                acquiringDomain.setCodingScheme(input.getAcquiringDomainMRID().getCodingScheme());
+                acquiringDomain.setValue(input.getAcquiringDomainMRID().getValue());
+                output.setAcquiringDomainMRID(acquiringDomain);
                 break;
             case "A85" : // 8.12
                 output.getReasons().add(createReason("Imbalance Adjustment Redispatch (ROP, block bids)"));
                 output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
                 output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                //AcquiringDomain
+                acquiringDomain.setCodingScheme(input.getAcquiringDomainMRID().getCodingScheme());
+                acquiringDomain.setValue(input.getAcquiringDomainMRID().getValue());
+                output.setAcquiringDomainMRID(acquiringDomain);
                 break;
             case "A15" : // 8.13
                 output.getReasons().add(createReason("Market Compensated Losses"));
                 output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
                 output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                //AcquiringDomain
+                acquiringDomain.setCodingScheme(input.getAcquiringDomainMRID().getCodingScheme());
+                acquiringDomain.setValue(input.getAcquiringDomainMRID().getValue());
+                output.setAcquiringDomainMRID(acquiringDomain);
                 break;
             case "C28" : // 8.14
                 output.getReasons().add(createReason("Imbalance Adjustment SST"));
                 output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
                 output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                //AcquiringDomain
+                acquiringDomain.setCodingScheme(input.getAcquiringDomainMRID().getCodingScheme());
+                acquiringDomain.setValue(input.getAcquiringDomainMRID().getValue());
+                output.setAcquiringDomainMRID(acquiringDomain);
                 break;
             case "B03" : // 8.15
                 output.getReasons().add(createReason("Imbalance Adjustment BRP4GOPACS"));
                 output.setQuantityMeasurementUnitName(QUANTITY_MEASUREMENT_UNIT_NAME);
                 output.setFlowDirectionDirection(input.getFlowDirectionDirection());
+                //AcquiringDomain
+                acquiringDomain.setCodingScheme(input.getAcquiringDomainMRID().getCodingScheme());
+                acquiringDomain.setValue(input.getAcquiringDomainMRID().getValue());
+                output.setAcquiringDomainMRID(acquiringDomain);
                 break;
             default:
                 throw new UnrecoverableException("Unexpected businessType");
@@ -236,9 +270,10 @@ public class BalancingMarketMapper {
         //Amount, only applies to A20(Imbalance)
         if("A20".equals(businessType)){
             for (com.faradaytrading.tennet.message.balancingmarket.FinancialPrice inputFP : input.getFinancialPrices()){
-                FinancialPrice financialPrice = objectFactory.createFinancialPrice();
-                financialPrice.setAmount(inputFP.getAmount());
-                financialPrice.setDirection(inputFP.getDirection());
+                FinancialPrice outputFP = objectFactory.createFinancialPrice();
+                outputFP.setAmount(inputFP.getAmount());
+                outputFP.setDirection(inputFP.getDirection());
+                output.getFinancialPrices().add(outputFP);
             }
         }
         //Flow direction

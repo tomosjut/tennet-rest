@@ -1,0 +1,135 @@
+{
+  "revisionNumber": "1",
+  "type": "A12",
+  "process.processType": "A06",
+  "sender_MarketParticipant.mRID": {
+    "codingScheme": "A10"
+  },
+  "sender_MarketParticipant.marketRole.type": "A05",
+  "receiver_MarketParticipant.mRID": {
+    "codingScheme": "A10",
+    "value": "1234567890123"
+  },
+  "receiver_MarketParticipant.marketRole.type": "A08",
+  "createdDateTime": "2022-04-03T12:41:47Z",
+  "docStatus": {
+    "value": "A01"
+  },
+  "area_Domain.mRID": {
+    "codingScheme": "A01",
+    "value": "10YNL----------L"
+  },
+  "allocationDecision_DateAndOrTime.dateTime": "2022-04-03T12:41:47.0Z",
+  "period.timeInterval": {
+    "start": "2022-04-01T22:00Z",
+    "end": "2022-04-02T22:00Z"
+  },
+  "TimeSeries": [
+    {
+      "mRID": "b0bd9eb8-2c01-4987-89cb-7e0fd008dbef",
+      "businessType": "A20",
+      "acquiring_Domain.mRID": {
+        "codingScheme": "A01",
+        "value": "10YNL----------L"
+      },
+      "flowDirection.direction": "A01",
+      "currency_Unit.name": "EUR",
+      "quantity_Measurement_Unit.name": "KWH",
+      "price_Measurement_Unit.name": "MWH",
+      "curveType": "A01",
+      "Period": [
+        {
+          "timeInterval": {
+            "start": "2022-04-01T22:00Z",
+            "end": "2022-04-02T22:00Z"
+          },
+          "Point": [
+            {
+              "position": "1",
+              "quantity": "433.0",
+              "Financial_Price": [
+                {
+                  "amount": "1354.21",
+                  "direction": "A02"
+                }
+              ]
+            },
+            {
+              "position": "2",
+              "quantity": "0.0",
+              "Financial_Price": [
+                {
+                  "amount": "0.00",
+                  "direction": "A01"
+                }
+              ]
+            },
+            {
+              "position": "96",
+              "quantity": "2345.000",
+              "Financial_Price": [
+                {
+                  "amount": "1234.98",
+                  "direction": "A02"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mRID": "f746b787-d711-4883-a806-1c65656d0e88",
+      "businessType": "A20",
+      "acquiring_Domain.mRID": {
+        "codingScheme": "A01",
+        "value": "10YNL----------L"
+      },
+      "flowDirection.direction": "A02",
+      "currency_Unit.name": "EUR",
+      "quantity_Measurement_Unit.name": "KWH",
+      "price_Measurement_Unit.name": "MWH",
+      "curveType": "A01",
+      "Period": [
+        {
+          "timeInterval": {
+            "start": "2022-04-01T22:00Z",
+            "end": "2022-04-02T22:00Z"
+          },
+          "Point": [
+            {
+              "position": "1",
+              "quantity": "0.0",
+              "Financial_Price": [
+                {
+                  "amount": "0.00",
+                  "direction": "A01"
+                }
+              ]
+            },
+            {
+              "position": "2",
+              "quantity": "1234.000",
+              "Financial_Price": [
+                {
+                  "amount": "4022.21",
+                  "direction": "A02"
+                }
+              ]
+            },
+            {
+              "position": "96",
+              "quantity": "0.000",
+              "Financial_Price": [
+                {
+                  "amount": "0.00",
+                  "direction": "A02"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

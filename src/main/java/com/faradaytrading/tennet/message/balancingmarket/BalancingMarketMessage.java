@@ -104,10 +104,6 @@ public class BalancingMarketMessage {
         this.mrid = value;
     }
 
-    public boolean isSetMRID() {
-        return (this.mrid!= null);
-    }
-
     /**
      * Gets the value of the revisionNumber property.
      * 
@@ -130,10 +126,6 @@ public class BalancingMarketMessage {
      */
     public void setRevisionNumber(String value) {
         this.revisionNumber = value;
-    }
-
-    public boolean isSetRevisionNumber() {
-        return (this.revisionNumber!= null);
     }
 
     /**
@@ -160,10 +152,6 @@ public class BalancingMarketMessage {
         this.type = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
-    }
-
     /**
      * Gets the value of the processProcessType property.
      * 
@@ -186,10 +174,6 @@ public class BalancingMarketMessage {
      */
     public void setProcessProcessType(String value) {
         this.processProcessType = value;
-    }
-
-    public boolean isSetProcessProcessType() {
-        return (this.processProcessType!= null);
     }
 
     /**
@@ -216,10 +200,6 @@ public class BalancingMarketMessage {
         this.senderMarketParticipantMRID = value;
     }
 
-    public boolean isSetSenderMarketParticipantMRID() {
-        return (this.senderMarketParticipantMRID!= null);
-    }
-
     /**
      * Gets the value of the senderMarketParticipantMarketRoleType property.
      * 
@@ -242,10 +222,6 @@ public class BalancingMarketMessage {
      */
     public void setSenderMarketParticipantMarketRoleType(String value) {
         this.senderMarketParticipantMarketRoleType = value;
-    }
-
-    public boolean isSetSenderMarketParticipantMarketRoleType() {
-        return (this.senderMarketParticipantMarketRoleType!= null);
     }
 
     /**
@@ -272,10 +248,6 @@ public class BalancingMarketMessage {
         this.receiverMarketParticipantMRID = value;
     }
 
-    public boolean isSetReceiverMarketParticipantMRID() {
-        return (this.receiverMarketParticipantMRID!= null);
-    }
-
     /**
      * Gets the value of the receiverMarketParticipantMarketRoleType property.
      * 
@@ -298,10 +270,6 @@ public class BalancingMarketMessage {
      */
     public void setReceiverMarketParticipantMarketRoleType(String value) {
         this.receiverMarketParticipantMarketRoleType = value;
-    }
-
-    public boolean isSetReceiverMarketParticipantMarketRoleType() {
-        return (this.receiverMarketParticipantMarketRoleType!= null);
     }
 
     /**
@@ -328,10 +296,6 @@ public class BalancingMarketMessage {
         this.createdDateTime = value;
     }
 
-    public boolean isSetCreatedDateTime() {
-        return (this.createdDateTime!= null);
-    }
-
     /**
      * Gets the value of the docStatus property.
      * 
@@ -354,10 +318,6 @@ public class BalancingMarketMessage {
      */
     public void setDocStatus(ActionStatus value) {
         this.docStatus = value;
-    }
-
-    public boolean isSetDocStatus() {
-        return (this.docStatus!= null);
     }
 
     /**
@@ -384,10 +344,6 @@ public class BalancingMarketMessage {
         this.areaDomainMRID = value;
     }
 
-    public boolean isSetAreaDomainMRID() {
-        return (this.areaDomainMRID!= null);
-    }
-
     /**
      * Gets the value of the allocationDecisionDateAndOrTimeDateTime property.
      * 
@@ -412,10 +368,6 @@ public class BalancingMarketMessage {
         this.allocationDecisionDateAndOrTimeDateTime = value;
     }
 
-    public boolean isSetAllocationDecisionDateAndOrTimeDateTime() {
-        return (this.allocationDecisionDateAndOrTimeDateTime!= null);
-    }
-
     /**
      * Gets the value of the periodTimeInterval property.
      * 
@@ -438,10 +390,6 @@ public class BalancingMarketMessage {
      */
     public void setPeriodTimeInterval(ESMPDateTimeInterval value) {
         this.periodTimeInterval = value;
-    }
-
-    public boolean isSetPeriodTimeInterval() {
-        return (this.periodTimeInterval!= null);
     }
 
     /**
@@ -471,10 +419,6 @@ public class BalancingMarketMessage {
             timeSeries = new ArrayList<TimeSeries>();
         }
         return this.timeSeries;
-    }
-
-    public boolean isSetTimeSeries() {
-        return ((this.timeSeries!= null)&&(!this.timeSeries.isEmpty()));
     }
 
     public void unsetTimeSeries() {
@@ -508,10 +452,6 @@ public class BalancingMarketMessage {
             reasons = new ArrayList<Reason>();
         }
         return this.reasons;
-    }
-
-    public boolean isSetReasons() {
-        return ((this.reasons!= null)&&(!this.reasons.isEmpty()));
     }
 
     public void unsetReasons() {
