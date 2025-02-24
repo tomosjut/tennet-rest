@@ -67,7 +67,7 @@
         "value": "10YNL----------L"
       },
       "flowDirection.direction": "A02",
-      "curveType": "A01",
+      "auction.mRID": "string",
       "Period": [
         {
           "timeInterval": {
