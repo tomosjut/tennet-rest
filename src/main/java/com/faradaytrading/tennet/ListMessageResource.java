@@ -74,7 +74,11 @@ public class ListMessageResource {
         try {
             String technicalMessageId = UUID.randomUUID().toString();
 
-            correlationId = StringUtils.defaultIfBlank(correlationId, UUID.randomUUID().toString());
+            if("null".equals(correlationId)){
+                correlationId = null;
+            }else {
+                correlationId = StringUtils.defaultIfBlank(correlationId, UUID.randomUUID().toString());
+            }
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId,
                     technicalMessageId,
                     contentType,

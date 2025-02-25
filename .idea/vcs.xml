@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../tennet-soap" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../tennet-wsdl" vcs="Git" />
   </component>
 </project>
