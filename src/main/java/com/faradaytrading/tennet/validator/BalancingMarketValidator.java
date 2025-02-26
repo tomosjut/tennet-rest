@@ -1,11 +1,12 @@
 package com.faradaytrading.tennet.validator;
 
-import _351.iec62325.tc57wg16._451_1.acknowledgementdocument._8._1.*;
+import _351.iec62325.tc57wg16._451_1.acknowledgementdocument._7._0.*;
 import _351.iec62325.tc57wg16._451_6.balancingdocument._4._5.BalancingMarketDocument;
 import _351.iec62325.tc57wg16._451_6.balancingdocument._4._5.Point;
 import _351.iec62325.tc57wg16._451_6.balancingdocument._4._5.SeriesPeriod;
 import com.faradaytrading.tennet.message.acknowledgement.AcknowledgementMessage;
 
+import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -42,7 +43,7 @@ public class BalancingMarketValidator {
         }
 
         output.setMRID(MRID);
-        output.setCreatedDateTime(input.getCreatedDateTime());
+        output.setCreatedDateTime(Instant.now().truncatedTo(ChronoUnit.SECONDS));
 
         PartyIDString senderPartyIDString = objectFactory.createPartyIDString();
         senderPartyIDString.setValue(input.getReceiverMarketParticipantMRID().getValue());
@@ -60,11 +61,19 @@ public class BalancingMarketValidator {
         output.setReceivedMarketDocumentType(input.getType());
         output.setReceivedMarketDocumentCreatedDateTime(input.getCreatedDateTime());
 
+        List<Reason> reasons = output.getReasons();
+
         for(_351.iec62325.tc57wg16._451_6.balancingdocument._4._5.TimeSeries inputTS : input.getTimeSeries()){
             TimeSeries outputTS = validateTimeSeries(inputTS);
             if(outputTS != null){
                 output.getRejectedTimeSeries().add(outputTS);
+                outputTS.getReasons().forEach(reason -> reasons.add(reason));
             }
+        }
+        if(reasons.isEmpty()){
+            reasons.add(createReason("A01", "Message fully accepted"));
+        } else {
+            reasons.add(createReason("A02", "Message fully rejected"));
         }
 
         return new AcknowledgementMessage(output, valid);

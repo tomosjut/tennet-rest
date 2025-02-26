@@ -1,6 +1,6 @@
 package com.faradaytrading.tennet.validator;
 
-import _351.iec62325.tc57wg16._451_1.acknowledgementdocument._8._1.AcknowledgementMarketDocument;
+import _351.iec62325.tc57wg16._451_1.acknowledgementdocument._7._0.AcknowledgementMarketDocument;
 import _351.iec62325.tc57wg16._451_6.balancingdocument._4._5.BalancingMarketDocument;
 import _351.iec62325.tc57wg16._451_6.balancingdocument._4._5.ESMPDateTimeInterval;
 import com.faradaytrading.tennet.message.acknowledgement.AcknowledgementMessage;
