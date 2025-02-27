@@ -47,7 +47,7 @@ public class GetBalancingResource {
         this.configuration = configuration;
         this.messageAddressingTransformer = new MessageAddressingTransformer();
         this.messageRequestTransformer = new MessageRequestTransformer();
-        this.balancingMarketValidator = new BalancingMarketValidator();
+        this.balancingMarketValidator = new BalancingMarketValidator(configuration);
         this.getBalancingService = new GetBalancingService(configuration);
         this.sendAcknowledgementService = new SendAcknowledgementService(configuration);
         this.soapTransformer = new SOAPTransformer(configuration);
@@ -87,10 +87,10 @@ public class GetBalancingResource {
                                                        @QueryParam("correlationId") String correlationId) throws UnrecoverableException, RequestException, RecoverableException {
         String contentType = "ACK_AGGREGATED_IMBALANCE_INFORMATION";
         correlationId = StringUtils.defaultIfBlank(correlationId, UUID.randomUUID().toString());
+        MessageAddressing inputMessageAddressing = soapTransformer.getSoapMessageAddressing(balancingMarketDocumentSoapMessage);
         MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
-        BalancingMarketDocument balancingMarketDocument = soapTransformer.getSoapBodyContent(balancingMarketDocumentSoapMessage, BalancingMarketDocument.class);
-        AcknowledgementMessage acknowledgementMessage = balancingMarketValidator.acknowledgeMarketDocument(balancingMarketDocument);
-
+        AcknowledgementMessage acknowledgementMessage = balancingMarketValidator.acknowledgeMarketDocument(balancingMarketDocumentSoapMessage);
+        messageAddressing.setCorrelationId(inputMessageAddressing.getCorrelationId());
         String acknowledgement = XmlUtils.marshal(acknowledgementMessage.acknowledgementMarketDocument(), AcknowledgementMarketDocument.class);
         LOGGER.info("Acknowledgement Request: {}", acknowledgement);
 

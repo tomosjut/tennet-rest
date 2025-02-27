@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static com.faradaytrading.tennet.utils.TestUtils.readConfig;
 import static com.faradaytrading.tennet.utils.TestUtils.readFile;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,7 +24,7 @@ public class BalancingMarketValidatorTest {
 
     @BeforeEach
     void before(){
-        validator = new BalancingMarketValidator();
+        validator = new BalancingMarketValidator(readConfig());
         transformer = new SOAPTransformer(null);
     }
 
@@ -112,9 +113,7 @@ public class BalancingMarketValidatorTest {
         String inputString = readFile("AcknowledgementTest/IncorrectPositions/input.xml");
         String expectedOutput = readFile("AcknowledgementTest/IncorrectPositions/output.xml");
 
-        BalancingMarketDocument input = transformer.getSoapBodyContent(inputString, BalancingMarketDocument.class);
-
-        AcknowledgementMessage output = validator.acknowledgeMarketDocument(input);
+        AcknowledgementMessage output = validator.acknowledgeMarketDocument(inputString);
 
         String actualOutput = XmlUtils.marshal(output.acknowledgementMarketDocument(), AcknowledgementMarketDocument.class);
 

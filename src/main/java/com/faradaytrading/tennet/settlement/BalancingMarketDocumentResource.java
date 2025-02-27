@@ -95,10 +95,10 @@ public class BalancingMarketDocumentResource {
     public Response getAcknowledgementMarketDocumentForeign(@QueryParam("technicalMessageId") String technicalMessageId,
                                                             @QueryParam("carrierId") String carrierId,
                                                             @QueryParam("senderId") String senderId,
-                                                            @QueryParam("receiverId") String receiverId) {
+                                                            @QueryParam("receiverId") String receiverId,
+                                                            @QueryParam("correlationId") String correlationId) {
         try {
             String contentType = "ACK_AGGREGATED_IMBALANCE_INFORMATION";
-            String correlationId = UUID.randomUUID().toString();
             GetMessageRequest getMessageRequest = messageRequestTransformer.createGetMessageRequest(technicalMessageId);
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
 
