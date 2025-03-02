@@ -150,7 +150,7 @@ public class BalancingMarketValidator {
             }
         }
 
-        output.setMRID(UUID.randomUUID().toString());
+        output.setMRID(UUID.randomUUID().toString().replace("-", ""));
         output.setCreatedDateTime(Instant.now().truncatedTo(ChronoUnit.SECONDS));
 
         PartyIDString senderPartyIDString = objectFactory.createPartyIDString();
