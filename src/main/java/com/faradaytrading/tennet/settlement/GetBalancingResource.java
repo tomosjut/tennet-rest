@@ -63,6 +63,10 @@ public class GetBalancingResource {
         try {
             String contentType = "AGGREGATED_IMBALANCE_INFORMATION";
             String correlationId = UUID.randomUUID().toString();
+
+            receiverId = StringUtils.defaultIfBlank(receiverId, configuration.faradayEAN());
+            senderId = StringUtils.defaultIfBlank(senderId, configuration.faradayEAN());
+
             GetMessageRequest getMessageRequest = messageRequestTransformer.createGetMessageRequest(technicalMessageId);
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
 
@@ -87,6 +91,10 @@ public class GetBalancingResource {
                                                        @QueryParam("correlationId") String correlationId) throws UnrecoverableException, RequestException, RecoverableException {
         String contentType = "ACK_AGGREGATED_IMBALANCE_INFORMATION";
         correlationId = StringUtils.defaultIfBlank(correlationId, UUID.randomUUID().toString());
+
+        senderId = configuration.faradayEAN();
+        carrierId = configuration.faradayEAN();
+
         MessageAddressing inputMessageAddressing = soapTransformer.getSoapMessageAddressing(balancingMarketDocumentSoapMessage);
         MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
         AcknowledgementMessage acknowledgementMessage = balancingMarketValidator.acknowledgeMarketDocument(balancingMarketDocumentSoapMessage);

@@ -35,11 +35,8 @@ public class BalancingMarketValidator {
 
     ObjectFactory objectFactory = new ObjectFactory();
 
-//    Map<String, List<String>> revisionCache = new LinkedHashMap<>(); //TODO: Database
-
     List<String> technicalMessageIdCache = new ArrayList<>(); //TODO: Database
 
-    Map<String, ArchiveEntry> archive = new LinkedHashMap<>();//Contains MRID as Key and SOAPMessage, Acknowledgement as value
     SOAPTransformer soapTransformer;
 
     public BalancingMarketValidator(ApplicationConfiguration configuration){
@@ -113,36 +110,6 @@ public class BalancingMarketValidator {
             reasons.add(createReason("999", "TEN-100243: RevisionNumber received  is lower than or equal to the RevisionNumber received earlier"));
         }
 
-//        ArchiveEntry archiveEntry = archive.get(archiveKey);
-//        if(archiveEntry != null){
-//            //Check if idempotency period has passed
-//            if(!archiveEntry.soapMessage().equals(soapMessage)){
-//                reasons.add(createReason("999", "Document Received earlier, but content differs"));
-//            } else if (!isMessageIdemPotent(archiveEntry.receivedDateTime(), receivedDateTime)){
-//                reasons.add(createReason("999", "TEN-100085: Identical document rejected as idem potency period timed out"));
-//            } else {
-//                return archiveEntry.acknowledgementMessage();
-//            }
-//        }
-//
-//        List<String> revisions = revisionCache.get(archiveKey);
-//        if(revisions == null || revisions.isEmpty()){
-//            //No revisions for this document yet
-//            revisions = new ArrayList<>();
-//            revisions.add(revisionNumber);
-//            revisionCache.put(archiveKey, revisions);
-//            if(!"1".equals(revisionNumber)){
-//                reasons.add(createReason("999", "TEN-100242: Initial Document does not have RevisionNumber 1"));
-//            }
-//        } else {
-//            //Check if revision number is lower than the highest revision number
-//            //Get the last entry of the revisions list
-//            String cachedRevision = revisions.getLast();
-//            if(Integer.parseInt(cachedRevision) > Integer.parseInt(revisionNumber)){
-//                reasons.add(createReason("999", "TEN-100243: RevisionNumber received  is lower than or equal to the RevisionNumber received earlier"));
-//            }
-//        }
-
         if(!"A12".equals(balancingMarketDocument.getType())){
             reasons.add(createReason("999", "TEN-100024 DocumentType incorrect"));
         }
@@ -205,7 +172,6 @@ public class BalancingMarketValidator {
 
         //Put in archive
         AcknowledgementMessage acknowledgementMessage = new AcknowledgementMessage(output, valid);
-        archive.put(archiveKey, new ArchiveEntry(soapMessage, acknowledgementMessage, receivedDateTime));
 
         return new AcknowledgementMessage(output, valid);
     }

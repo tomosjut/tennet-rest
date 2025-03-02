@@ -69,27 +69,25 @@ public class ListMessageResource {
     public Response listMessageMetadata(@QueryParam("carrierId") String carrierId,
                                         @QueryParam("senderId") String senderId,
                                         @QueryParam("receiverId") String receiverId,
-                                        @QueryParam("contentType") String contentType,
-                                        @QueryParam("correlationId") String correlationId){
+                                        @QueryParam("contentType") String contentType){
         try {
             String technicalMessageId = UUID.randomUUID().toString();
 
-            if("null".equals(correlationId)){
-                correlationId = null;
-            }else {
-                correlationId = StringUtils.defaultIfBlank(correlationId, UUID.randomUUID().toString());
-            }
+            carrierId = StringUtils.defaultIfBlank(carrierId, configuration.faradayEAN());
+            senderId = StringUtils.defaultIfBlank(senderId, configuration.faradayEAN());
+            receiverId = StringUtils.defaultIfBlank(receiverId, configuration.faradayEAN());
+
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId,
                     technicalMessageId,
                     contentType,
                     senderId,
                     receiverId,
-                    correlationId);
+                    null);
 
             List<String> contentTypeList = new ArrayList<>();
             contentTypeList.add(contentType);
 
-            ListMessageMetadataRequest listMessageMetadataRequest = messageRequestTransformer.createListMessageMetadataRequest(correlationId,receiverId, contentTypeList, 10);
+            ListMessageMetadataRequest listMessageMetadataRequest = messageRequestTransformer.createListMessageMetadataRequest(null,receiverId, contentTypeList, 10);
             String response = listMessageMetadataService.listMessageMetadata(listMessageMetadataRequest, messageAddressing);
             return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e){
