@@ -17,4 +17,7 @@ public interface ApplicationConfiguration extends SoapApplicationConfiguration {
 
     @WithName("knownEANs")
     List<String> knownEans();
+
+    @WithName("fileArchiveBaseDir")
+    String fileArchiveBaseDir();
 }

@@ -97,7 +97,7 @@ public class GetBalancingResource {
         String acknowledgementResponse = sendAcknowledgementService.sendAcknowledgement(acknowledgementMessage.acknowledgementMarketDocument(), messageAddressing);
         LOGGER.info("Acknowledgement Response: {}", acknowledgementResponse);
         try {
-            AcknowledgementMarketDocumentResponse acknowledgementMarketDocumentResponse = soapTransformer.getSoapBodyContent(acknowledgementResponse, AcknowledgementMarketDocumentResponse.class);
+//            AcknowledgementMarketDocumentResponse acknowledgementMarketDocumentResponse = soapTransformer.getSoapBodyContent(acknowledgementResponse, AcknowledgementMarketDocumentResponse.class);
             //We return the Acknowledgement we have sent.
             return Response.ok(XmlUtils.prettyPrintXml(acknowledgement)).build();
         } catch (Exception e){

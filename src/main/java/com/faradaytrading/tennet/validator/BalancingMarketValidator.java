@@ -12,8 +12,15 @@ import com.faradaytrading.tennet.message.acknowledgement.ArchiveEntry;
 import com.faradaytrading.tennet.transformer.SOAPTransformer;
 import nl.tennet.svc.sys.mmchub.header.v1.MessageAddressing;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -22,11 +29,13 @@ import java.util.*;
 
 public class BalancingMarketValidator {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BalancingMarketValidator.class);
+
     ApplicationConfiguration configuration;
 
     ObjectFactory objectFactory = new ObjectFactory();
 
-    Map<String, List<String>> revisionCache = new LinkedHashMap<>(); //TODO: Database
+//    Map<String, List<String>> revisionCache = new LinkedHashMap<>(); //TODO: Database
 
     List<String> technicalMessageIdCache = new ArrayList<>(); //TODO: Database
 
@@ -91,37 +100,48 @@ public class BalancingMarketValidator {
         //Semantical validations
         String MRID = balancingMarketDocument.getMRID();
         String revisionNumber = balancingMarketDocument.getRevisionNumber();
-        String archiveKey = "%s-%s-%s".formatted(MRID, senderMarketParticipantMRID, revisionNumber);
+        String archiveKey = "%s-%s".formatted(MRID, senderMarketParticipantMRID);
 
-        ArchiveEntry archiveEntry = archive.get(archiveKey);
-        if(archiveEntry != null){
-            //Check if idempotency period has passed
-            if(!archiveEntry.soapMessage().equals(soapMessage)){
-                reasons.add(createReason("999", "Document Received earlier, but content differs"));
-            } else if (!isMessageIdemPotent(archiveEntry.receivedDateTime(), receivedDateTime)){
-                reasons.add(createReason("999", "TEN-100085: Identical document rejected as idem potency period timed out"));
-            } else {
-                return archiveEntry.acknowledgementMessage();
-            }
-        }
-
-        List<String> revisions = revisionCache.get(archiveKey);
-        if(revisions == null || revisions.isEmpty()){
-            //No revisions for this document yet
-            revisions = new ArrayList<>();
-            revisions.add(revisionNumber);
-            revisionCache.put(archiveKey, revisions);
+        //Check filesystem for previous revisions
+        List<String> revisions = listFilesInDirectory(archiveKey);
+        if(revisions.isEmpty()){
+            writeFile(soapMessage, archiveKey, "BalancingMarketDocument", revisionNumber);
             if(!"1".equals(revisionNumber)){
                 reasons.add(createReason("999", "TEN-100242: Initial Document does not have RevisionNumber 1"));
             }
-        } else {
-            //Check if revision number is lower than the highest revision number
-            //Get the last entry of the revisions list
-            String cachedRevision = revisions.getLast();
-            if(Integer.parseInt(cachedRevision) > Integer.parseInt(revisionNumber)){
-                reasons.add(createReason("999", "TEN-100243: RevisionNumber received  is lower than or equal to the RevisionNumber received earlier"));
-            }
+        } else if(!isRevisionNumberValid(revisions, revisionNumber)) {
+            reasons.add(createReason("999", "TEN-100243: RevisionNumber received  is lower than or equal to the RevisionNumber received earlier"));
         }
+
+//        ArchiveEntry archiveEntry = archive.get(archiveKey);
+//        if(archiveEntry != null){
+//            //Check if idempotency period has passed
+//            if(!archiveEntry.soapMessage().equals(soapMessage)){
+//                reasons.add(createReason("999", "Document Received earlier, but content differs"));
+//            } else if (!isMessageIdemPotent(archiveEntry.receivedDateTime(), receivedDateTime)){
+//                reasons.add(createReason("999", "TEN-100085: Identical document rejected as idem potency period timed out"));
+//            } else {
+//                return archiveEntry.acknowledgementMessage();
+//            }
+//        }
+//
+//        List<String> revisions = revisionCache.get(archiveKey);
+//        if(revisions == null || revisions.isEmpty()){
+//            //No revisions for this document yet
+//            revisions = new ArrayList<>();
+//            revisions.add(revisionNumber);
+//            revisionCache.put(archiveKey, revisions);
+//            if(!"1".equals(revisionNumber)){
+//                reasons.add(createReason("999", "TEN-100242: Initial Document does not have RevisionNumber 1"));
+//            }
+//        } else {
+//            //Check if revision number is lower than the highest revision number
+//            //Get the last entry of the revisions list
+//            String cachedRevision = revisions.getLast();
+//            if(Integer.parseInt(cachedRevision) > Integer.parseInt(revisionNumber)){
+//                reasons.add(createReason("999", "TEN-100243: RevisionNumber received  is lower than or equal to the RevisionNumber received earlier"));
+//            }
+//        }
 
         if(!"A12".equals(balancingMarketDocument.getType())){
             reasons.add(createReason("999", "TEN-100024 DocumentType incorrect"));
@@ -180,6 +200,7 @@ public class BalancingMarketValidator {
             reasons.add(createReason("A01", "Message fully accepted"));
         } else {
             reasons.add(createReason("A02", "Message fully rejected"));
+            valid = false;
         }
 
         //Put in archive
@@ -215,18 +236,18 @@ public class BalancingMarketValidator {
         }
 
         if(inputSP.getTimeInterval() != null && !areIntervalsEqual(mainInterval, inputSP.getTimeInterval())){
-            output.getReasons().add(createReason("999", "TEN-100150:  Invalid timeInterval in timeSeries %s".formatted(input.getMRID())));
+            output.getReasons().add(createReason("999", "TEN-100150: Invalid timeInterval in timeSeries %s".formatted(input.getMRID())));
         }
 
         if(input.getReasons() != null && !"PT15M".equals(inputSP.getResolution().toString())){
-            output.getReasons().add(createReason("999", "TEN-100062:  Incorrect resolution"));
+            output.getReasons().add(createReason("999", "TEN-100062: Incorrect resolution"));
         }
 
         List<Reason> pointsReasons = checkPositionPoints(inputSP, pointsSize, input.getMRID());
         output.getReasons().addAll(pointsReasons);
 
         if(pointsSize == 0){
-            Reason reason = createReason("999", "TEN-100150:  Invalid timeInterval in timeSeries %s".formatted(input.getMRID()));
+            Reason reason = createReason("999", "TEN-100150: Invalid timeInterval in timeSeries %s".formatted(input.getMRID()));
             output.getReasons().add(reason);
         }
 
@@ -311,6 +332,7 @@ public class BalancingMarketValidator {
         return null;
     }
 
+
     private boolean isInDST(String input){
         ZoneId zoneId = ZoneId.of("Europe/Amsterdam");
         // Define the formatter to parse date strings
@@ -394,5 +416,62 @@ public class BalancingMarketValidator {
             }
         }
         return reasons;
+    }
+
+    private boolean isRevisionNumberValid(List<String> files, String revisionString) throws UnrecoverableException {
+        Integer inputRevisionNumber = Integer.parseInt(revisionString);
+        for(String s : files){
+            String revision = s.replace("BalancingMarketDocument", "").replace("-", "").replace(".xml", "");
+            if(inputRevisionNumber <= Integer.parseInt(revision)){
+                LOGGER.warn("Revision number lower or equal to previous revision");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private List<String> listFilesInDirectory(String archiveKey) throws UnrecoverableException {
+        String path = "%s/%s".formatted(configuration.fileArchiveBaseDir(), archiveKey);
+        Path dirPath = Paths.get(path);
+        List<String> fileNames = new ArrayList<>();
+        if(!Files.exists(dirPath)){
+            LOGGER.info("No directory found for {}", archiveKey);
+            return fileNames;
+        }
+
+        try(DirectoryStream<Path> stream = Files.newDirectoryStream(dirPath)){
+            for(Path p : stream){
+                if(Files.isRegularFile(p)){
+                    fileNames.add(p.getFileName().toString());
+                }
+            }
+        } catch (IOException e) {
+            throw new UnrecoverableException(e);
+        }
+        return fileNames;
+    }
+
+    private String readFile(String archiveKey, String documentName, String revision){
+        String path = "%s/%s".formatted(configuration.fileArchiveBaseDir(), archiveKey);
+        String fileName = "%s-%s.xml".formatted(documentName, revision);
+        Path filePath = Paths.get(path, fileName);
+        try {
+            return Files.readString(filePath);
+        } catch (IOException e){
+            LOGGER.info("File {}/{} not found", path, fileName);
+            return null;
+        }
+    }
+
+    private void writeFile(String file, String archiveKey, String documentName, String revision) throws UnrecoverableException {
+        try {
+            String path = "%s/%s".formatted(configuration.fileArchiveBaseDir(), archiveKey);
+            String fileName = "%s-%s.xml".formatted(documentName, revision);
+            Path filePath = Paths.get(path, fileName);
+            Files.createDirectories(filePath.getParent());
+            Files.write(filePath, file.getBytes());
+        } catch (Exception e){
+            throw new UnrecoverableException(e);
+        }
     }
 }
