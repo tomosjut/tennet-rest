@@ -109,6 +109,8 @@ public class BalancingMarketValidator {
             }
         } else if(!isRevisionNumberValid(revisions, revisionNumber)) {
             reasons.add(createReason("999", "TEN-100243: RevisionNumber received  is lower than or equal to the RevisionNumber received earlier"));
+        } else {
+            writeFile(soapMessage, archiveKey, "BalancingMarketDocument", revisionNumber);
         }
 
         if(!"A12".equals(balancingMarketDocument.getType())){
@@ -125,7 +127,7 @@ public class BalancingMarketValidator {
         }
 
         if(timeintervalInFuture(balancingMarketDocument.getPeriodTimeInterval())){
-            reasons.add(createReason("999", "TEN-100122 Business day too far into the future/Gate not open"));
+            reasons.add(createReason("999", "TEN-100275 Invalid period.timeInterval"));
         }
 
         if(balancingMarketDocument.getReasons() != null && !balancingMarketDocument.getReasons().isEmpty()){
@@ -213,10 +215,10 @@ public class BalancingMarketValidator {
         List<Reason> pointsReasons = checkPositionPoints(inputSP, pointsSize, input.getMRID());
         output.getReasons().addAll(pointsReasons);
 
-        if(pointsSize == 0){
-            Reason reason = createReason("999", "TEN-100150: Invalid timeInterval in timeSeries %s".formatted(input.getMRID()));
-            output.getReasons().add(reason);
-        }
+//        if(pointsSize == 0){
+//            Reason reason = createReason("999", "TEN-100150: Invalid timeInterval in timeSeries %s".formatted(input.getMRID()));
+//            output.getReasons().add(reason);
+//        }
 
         if(output.getReasons().size() == 0){
             //No errors in TimeSeries, returning null
@@ -248,20 +250,20 @@ public class BalancingMarketValidator {
         boolean startInDST = zoneId.getRules().isDaylightSavings(dateTime1.toInstant());
         boolean endInDST = zoneId.getRules().isDaylightSavings(dateTime2.toInstant());
 
-        long expectedPeriodPoints = 96;
-        if(startInDST && !endInDST){
-            expectedPeriodPoints = 100;
-        } else if (!startInDST && endInDST){
-            expectedPeriodPoints = 92;
-        }
+//        long expectedPeriodPoints = 96;
+//        if(startInDST && !endInDST){
+//            expectedPeriodPoints = 100;
+//        } else if (!startInDST && endInDST){
+//            expectedPeriodPoints = 92;
+//        }
 
         // Calculate the difference in hours and multiply by 4 (one period per quarter hour)
         long periodPoints = ChronoUnit.HOURS.between(dateTime1, dateTime2) * 4;
 
-        if(periodPoints != expectedPeriodPoints){
-            //TimeInterval is niet correct, return 0;
-            return 0;
-        }
+//        if(periodPoints != expectedPeriodPoints){
+//            //TimeInterval is niet correct, return 0;
+//            return 0;
+//        }
 
         return periodPoints;
 

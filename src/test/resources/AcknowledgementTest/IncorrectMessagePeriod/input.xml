@@ -2,42 +2,42 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://sys.svc.tennet.nl/MMCHub/Header/v1">
     <soapenv:Header>
         <v1:MessageAddressing>
-            <v1:technicalMessageId>4a618f83-296e-4fb9-9e3b-a403bf39396a</v1:technicalMessageId>
-            <v1:correlationId>c10c2866-8f00-4f87-9fe4-2e5a4d17490d</v1:correlationId>
+            <v1:technicalMessageId>4371c1f5-4bb5-4e84-988c-15cd57efb971</v1:technicalMessageId>
+            <v1:correlationId>20147e01-0e30-4063-8615-f48f98d5f463</v1:correlationId>
             <v1:senderId>8716867111163</v1:senderId>
             <v1:receiverId>8720844058549</v1:receiverId>
             <v1:carrierId>8716867111163</v1:carrierId>
             <v1:contentType>AGGREGATED_IMBALANCE_INFORMATION</v1:contentType>
         </v1:MessageAddressing>
         <wsse:Security xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" soap:mustUnderstand="1">
-            <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Id="G13fa9d03-e1df-428e-93f7-588e3c679bc1">
+            <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Id="Gb52e8009-5be1-4684-aa00-f6759fb68fd2">
                 <dsig:SignedInfo>
                     <dsig:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
                         <c14nEx:InclusiveNamespaces xmlns:c14nEx="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="soapenv v1"/>
                     </dsig:CanonicalizationMethod>
                     <dsig:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
-                    <dsig:Reference URI="#G1e1193cd-078b-4d5e-b96c-2acec81684e9">
+                    <dsig:Reference URI="#G7217d82b-d5a1-4d09-83ec-5ce6e5315a0a">
                         <dsig:Transforms>
                             <dsig:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
                                 <c14nEx:InclusiveNamespaces xmlns:c14nEx="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList=""/>
                             </dsig:Transform>
                         </dsig:Transforms>
                         <dsig:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
-                        <dsig:DigestValue>4w6ASmavcqMiZVQRX4gnTjrGgG3xzWKPP0A3h56e24g=</dsig:DigestValue>
+                        <dsig:DigestValue>coGvcHUiS9IkmBXUGcVYJp/lB4meKTuCCcXz+wp84J8=</dsig:DigestValue>
                     </dsig:Reference>
                 </dsig:SignedInfo>
-                <dsig:SignatureValue>HmClmS3dmwRY+prftZQrOHUXohrvgaWW8St8o/vUkUYC+rYQt9zOtwYeEOpAtwXG4MAPHyeLK6FjlJCRH+tsTXGtqzGwyvRvYHLzMrHXTv8aqkfJ4/3qvo+/iRsyQgbOD2kC30zB4Qc7AK5gfQmgtHvIq35603uyElJHuTen8RW1kQ9NHF2a8oyYbWnF6aOd36BDCnpZbF5TekgERi1T3T2eN7NCCsVyPWwkr2fP6epoAkR7SP/2BYpib7mGCu1ElYirM4H4GTvCCnLUfGHC3xURg5/8KmBDVIcor2v07t2ycPWRIP578P8Tf0/9grqM7sLxOO14FMPATQ/yLax1OA==</dsig:SignatureValue>
-                <dsig:KeyInfo Id="G1dcd8f5c-acad-4c56-9a3e-5ce691de319a">
-                    <wsse:SecurityTokenReference xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="G8e01da7b-3fbe-4639-a45a-3d6753244a1e">
+                <dsig:SignatureValue>KSEfuzv+WwIwX7IJkpaZzBzebLjW/5Er8GrQCnC5ZOh7b9/EM4HnaTPTtLl6R12lRCCoz+dCa3GC1V6HAyhy0rlQco03ZOcpqMHUWbCZZQddD1M+nMqQQV3WUBqBtFXU5dCOt9f1mxXmm5Lovdgjs4vnP+R6Sz3rsOJHpoH2iKgAumxcd4KzYYKBcnm5QvebSS7oAL+ex0L2qipe3PkciNBml55nSFk2b1oCZwXIKloFatTDcGew9dL7ek9LJyLPtRKkgqlKyVXclFpYBjG7jjcY0pSAHMjADGUitELbNYWcBxnqWkEaVxhBe2Qp2vRPSIQ3taFZOSG7jSbptXsmTg==</dsig:SignatureValue>
+                <dsig:KeyInfo Id="G5b9916e6-f0f6-4562-954d-b093210b8e9a">
+                    <wsse:SecurityTokenReference xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="G12c5fd50-c3db-41e2-8207-752b36bee288">
                         <wsse:KeyIdentifier EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509SubjectKeyIdentifier">MmKZ60MHjvpBalBkf75NVFSUJ6s=</wsse:KeyIdentifier>
                     </wsse:SecurityTokenReference>
                 </dsig:KeyInfo>
             </dsig:Signature>
         </wsse:Security>
     </soapenv:Header>
-    <soapenv:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="G1e1193cd-078b-4d5e-b96c-2acec81684e9">
+    <soapenv:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="G7217d82b-d5a1-4d09-83ec-5ce6e5315a0a">
         <Balancing_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:balancingdocument:4:5">
-            <mRID>bea5fb57df3774b3</mRID>
+            <mRID>de26a0d8aada427388309f9b5e9a95ba</mRID>
             <revisionNumber>1</revisionNumber>
             <type>A12</type>
             <process.processType>A06</process.processType>
@@ -45,18 +45,18 @@
             <sender_MarketParticipant.marketRole.type>A05</sender_MarketParticipant.marketRole.type>
             <receiver_MarketParticipant.mRID codingScheme="A10">8720844058549</receiver_MarketParticipant.mRID>
             <receiver_MarketParticipant.marketRole.type>A08</receiver_MarketParticipant.marketRole.type>
-            <createdDateTime>2025-02-24T12:28:11Z</createdDateTime>
+            <createdDateTime>2025-03-03T12:29:39Z</createdDateTime>
             <docStatus>
                 <value>A01</value>
             </docStatus>
             <area_Domain.mRID codingScheme="A01">10YNL----------L</area_Domain.mRID>
-            <allocationDecision_DateAndOrTime.dateTime>2025-02-24T12:28:11Z</allocationDecision_DateAndOrTime.dateTime>
+            <allocationDecision_DateAndOrTime.dateTime>2025-03-03T12:29:39Z</allocationDecision_DateAndOrTime.dateTime>
             <period.timeInterval>
-                <start>2025-02-21T22:00Z</start>
-                <end>2025-02-23T23:00Z</end>
+                <start>2025-02-21T23:00Z</start>
+                <end>2025-02-22T23:00Z</end>
             </period.timeInterval>
             <TimeSeries>
-                <mRID>47e328f78f3c4b4ba00c4a72f7bcdc6a</mRID>
+                <mRID>f2c56567243d49af9d9113914100f66c</mRID>
                 <businessType>A02</businessType>
                 <flowDirection.direction>A01</flowDirection.direction>
                 <quantity_Measurement_Unit.name>KWH</quantity_Measurement_Unit.name>
@@ -64,12 +64,12 @@
                 <auction.mRID>test.auction_mRID_A02</auction.mRID>
                 <Period>
                     <timeInterval>
-                        <start>2025-02-21T22:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <start>2025-02-21T21:00Z</start>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
-                        <position>3</position>
+                        <position>1</position>
                         <quantity>0.000</quantity>
                     </Point>
                     <Point>
@@ -77,7 +77,7 @@
                         <quantity>293.000</quantity>
                     </Point>
                     <Point>
-                        <position>1</position>
+                        <position>3</position>
                         <quantity>0.000</quantity>
                     </Point>
                     <Point>
@@ -452,6 +452,38 @@
                         <position>96</position>
                         <quantity>0.000</quantity>
                     </Point>
+                    <Point>
+                        <position>97</position>
+                        <quantity>0.000</quantity>
+                    </Point>
+                    <Point>
+                        <position>98</position>
+                        <quantity>0.000</quantity>
+                    </Point>
+                    <Point>
+                        <position>99</position>
+                        <quantity>508.000</quantity>
+                    </Point>
+                    <Point>
+                        <position>100</position>
+                        <quantity>0.000</quantity>
+                    </Point>
+                    <Point>
+                        <position>101</position>
+                        <quantity>0.000</quantity>
+                    </Point>
+                    <Point>
+                        <position>102</position>
+                        <quantity>0.000</quantity>
+                    </Point>
+                    <Point>
+                        <position>103</position>
+                        <quantity>508.000</quantity>
+                    </Point>
+                    <Point>
+                        <position>104</position>
+                        <quantity>0.000</quantity>
+                    </Point>
                 </Period>
                 <Reason>
                     <code>A95</code>
@@ -459,7 +491,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>3c0202475290469b8ce6e02d9751ffcd</mRID>
+                <mRID>2ed48976e87b4cd2811f07ff20461024</mRID>
                 <businessType>A02</businessType>
                 <flowDirection.direction>A02</flowDirection.direction>
                 <quantity_Measurement_Unit.name>KWH</quantity_Measurement_Unit.name>
@@ -467,12 +499,12 @@
                 <auction.mRID>test.auction_mRID_A02</auction.mRID>
                 <Period>
                     <timeInterval>
-                        <start>2025-02-21T22:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <start>2025-02-21T23:00Z</start>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
-                        <position>3</position>
+                        <position>1</position>
                         <quantity>489.000</quantity>
                     </Point>
                     <Point>
@@ -480,7 +512,7 @@
                         <quantity>0.000</quantity>
                     </Point>
                     <Point>
-                        <position>1</position>
+                        <position>3</position>
                         <quantity>93.000</quantity>
                     </Point>
                     <Point>
@@ -862,7 +894,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>9c0076b4c53d4e7da77ffd6b1a9f7db8</mRID>
+                <mRID>2659ecab8ef249468d8bf4cfad312325</mRID>
                 <businessType>A03</businessType>
                 <flowDirection.direction>A01</flowDirection.direction>
                 <quantity_Measurement_Unit.name>KWH</quantity_Measurement_Unit.name>
@@ -870,8 +902,8 @@
                 <auction.mRID>test.auction_mRID_A03</auction.mRID>
                 <Period>
                     <timeInterval>
-                        <start>2025-02-21T22:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <start>2025-02-21T23:00Z</start>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -1265,7 +1297,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>3dff18402e1f4ddea82088affad52536</mRID>
+                <mRID>cab25e8a07dd43c29eec60846f8c0494</mRID>
                 <businessType>A03</businessType>
                 <flowDirection.direction>A02</flowDirection.direction>
                 <quantity_Measurement_Unit.name>KWH</quantity_Measurement_Unit.name>
@@ -1274,7 +1306,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -1668,13 +1700,13 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>acc3aaa02b414698b5dfe4a55447a579</mRID>
+                <mRID>34e0c26121a74a91829e1a62df506575</mRID>
                 <businessType>B22</businessType>
                 <curveType>A01</curveType>
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -2068,7 +2100,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>2454e217c24846c6910f1828297b8574</mRID>
+                <mRID>aba86bd99d4c4170b2ad3b1bf6e34198</mRID>
                 <businessType>B24</businessType>
                 <currency_Unit.name>EUR</currency_Unit.name>
                 <price_Measurement_Unit.name>MWH</price_Measurement_Unit.name>
@@ -2076,7 +2108,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -2758,7 +2790,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>c33ccc1bd1b04632a625876d7a1d269f</mRID>
+                <mRID>492ac50480764ece9f28cc9293b39481</mRID>
                 <businessType>B25</businessType>
                 <currency_Unit.name>EUR</currency_Unit.name>
                 <price_Measurement_Unit.name>MWH</price_Measurement_Unit.name>
@@ -2766,7 +2798,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -3448,7 +3480,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>98c64b13fc7a4a9aac3281ac5a0c89d8</mRID>
+                <mRID>1b88f20d900641278ea480aa76801635</mRID>
                 <businessType>A19</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <flowDirection.direction>A01</flowDirection.direction>
@@ -3457,7 +3489,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -3851,7 +3883,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>985c50413db14ed1aa85088c78820ecf</mRID>
+                <mRID>177b70b10a8b488b9456bbbcf6ace9b3</mRID>
                 <businessType>A19</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <flowDirection.direction>A02</flowDirection.direction>
@@ -3860,7 +3892,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -4254,7 +4286,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>ca83b7518d5d49588b67f0c17f929f51</mRID>
+                <mRID>2bfda19c9abd403f88b4612c8046cd27</mRID>
                 <businessType>A20</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <flowDirection.direction>A01</flowDirection.direction>
@@ -4265,7 +4297,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -5043,7 +5075,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>17433f8f3d224fd18169794ff8fd7998</mRID>
+                <mRID>21f39e88c4eb420687bd18862c66d760</mRID>
                 <businessType>A20</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <flowDirection.direction>A02</flowDirection.direction>
@@ -5054,7 +5086,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -5832,7 +5864,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>59caa28a89b643b9ba6da0c3c10baff2</mRID>
+                <mRID>56310f20953f416db247cb2795f0b7d4</mRID>
                 <businessType>A97</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <standard_MarketProduct.marketProductType>A02</standard_MarketProduct.marketProductType>
@@ -5842,7 +5874,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -6236,7 +6268,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>23c87387c1b14bd8a521951f4e4e320b</mRID>
+                <mRID>3bfd8f5465a0417080b78b0921fad017</mRID>
                 <businessType>A97</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <standard_MarketProduct.marketProductType>A02</standard_MarketProduct.marketProductType>
@@ -6246,7 +6278,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -6640,7 +6672,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>e81a6470396b497eb32bb04d4306a8ed</mRID>
+                <mRID>5e9cf4fe22c84aafb64f2b4350088e41</mRID>
                 <businessType>A85</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <flowDirection.direction>A01</flowDirection.direction>
@@ -6649,7 +6681,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -7043,7 +7075,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>436c8439e55347b1bee3f6dccc202ae2</mRID>
+                <mRID>133a9d4bbf2240d2b6eaaa85ee1e6e20</mRID>
                 <businessType>A85</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <flowDirection.direction>A02</flowDirection.direction>
@@ -7052,7 +7084,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -7446,7 +7478,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>ec79a54bdda74b76876fb49c0e674be7</mRID>
+                <mRID>5c21e7465d5f42dfb50cb1d00069cb16</mRID>
                 <businessType>C28</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <flowDirection.direction>A01</flowDirection.direction>
@@ -7455,7 +7487,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -7849,7 +7881,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>66184b69b8954a13add19536cfe6facd</mRID>
+                <mRID>b1cdb95d3818443789b208f93f675127</mRID>
                 <businessType>C28</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <flowDirection.direction>A02</flowDirection.direction>
@@ -7858,7 +7890,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -8252,7 +8284,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>d48d305a0aff40329b95a148fe74d2e3</mRID>
+                <mRID>d8c698828f7b4965a8c49142ba83d38e</mRID>
                 <businessType>A15</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <flowDirection.direction>A01</flowDirection.direction>
@@ -8261,7 +8293,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -8655,7 +8687,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>3eda1798f1ef4e5ca47ec8e05b05d2b2</mRID>
+                <mRID>b5977e3962da42d18e0bc67e0697c82d</mRID>
                 <businessType>A15</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <flowDirection.direction>A02</flowDirection.direction>
@@ -8664,7 +8696,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -9058,7 +9090,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>50ce513fe4254435bcc842cc6eae3889</mRID>
+                <mRID>c67495e86e9d4c199fef5781f8bf0e59</mRID>
                 <businessType>A96</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <standard_MarketProduct.marketProductType>A01</standard_MarketProduct.marketProductType>
@@ -9068,7 +9100,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -9462,7 +9494,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>84b2f3da3f4d43b2847e6ceba89dbb34</mRID>
+                <mRID>ca82e744be76421cb8cad8adad32b894</mRID>
                 <businessType>A96</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <standard_MarketProduct.marketProductType>A01</standard_MarketProduct.marketProductType>
@@ -9472,7 +9504,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -9866,7 +9898,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>1990ed26e1884912ba819d3eb4996e31</mRID>
+                <mRID>59f8d5897df549f9b3b36592c97aeef7</mRID>
                 <businessType>A14</businessType>
                 <acquiring_Domain.mRID codingScheme="A01">10YNL----------L</acquiring_Domain.mRID>
                 <connecting_Domain.mRID codingScheme="A10">871688600000002202</connecting_Domain.mRID>
@@ -9876,7 +9908,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
@@ -10270,7 +10302,7 @@
                 </Reason>
             </TimeSeries>
             <TimeSeries>
-                <mRID>6aed2fc644ed4fe39e87bf5fa26f9f16</mRID>
+                <mRID>a85f90d5213d4f48b6ea5a827d3b4ba4</mRID>
                 <businessType>A14</businessType>
                 <acquiring_Domain.mRID codingScheme="A10">871688600000002202</acquiring_Domain.mRID>
                 <connecting_Domain.mRID codingScheme="A01">10YNL----------L</connecting_Domain.mRID>
@@ -10280,7 +10312,7 @@
                 <Period>
                     <timeInterval>
                         <start>2025-02-21T23:00Z</start>
-                        <end>2025-02-23T23:00Z</end>
+                        <end>2025-02-22T23:00Z</end>
                     </timeInterval>
                     <resolution>PT15M</resolution>
                     <Point>
