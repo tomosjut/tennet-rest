@@ -2,6 +2,7 @@ package com.faradaytrading.tennet.validator;
 
 import _351.iec62325.tc57wg16._451_1.acknowledgementdocument._7._0.*;
 import _351.iec62325.tc57wg16._451_6.balancingdocument._4._5.BalancingMarketDocument;
+import _351.iec62325.tc57wg16._451_6.balancingdocument._4._5.FinancialPrice;
 import _351.iec62325.tc57wg16._451_6.balancingdocument._4._5.Point;
 import _351.iec62325.tc57wg16._451_6.balancingdocument._4._5.SeriesPeriod;
 import com.faradaytrading.tennet.config.ApplicationConfiguration;
@@ -373,6 +374,14 @@ public class BalancingMarketValidator {
             if(point.getQuantity() != null && point.getQuantity().compareTo(BigDecimal.ZERO) < 0){
                 reasons.add(createReason("999", "TEN-100065: Incorrect Qty (format)"));
             }
+
+            if(point.getFinancialPrices() != null && !point.getFinancialPrices().isEmpty()){
+                FinancialPrice fp = point.getFinancialPrices().get(0);
+                if(fp.getAmount() != null && fp.getAmount().compareTo(BigDecimal.ZERO) < 0){
+                    reasons.add(createReason("999", "TEN-100274: Invalid price amount"));
+                }
+            }
+
             positions.add(point.getPosition());
         }
         //Check for missing points
