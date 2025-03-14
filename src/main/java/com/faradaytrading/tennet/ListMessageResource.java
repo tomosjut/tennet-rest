@@ -79,7 +79,7 @@ public class ListMessageResource {
 
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId,
                     technicalMessageId,
-                    contentType,
+                    StringUtils.isBlank(contentType) ? null : contentType,
                     senderId,
                     receiverId,
                     null);

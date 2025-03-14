@@ -13,15 +13,15 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
-public class ScheduleMarketMapper {
+public class ScheduleMarketMapperForeign {
 
     ApplicationConfiguration configuration;
     ObjectFactory objectFactory = new ObjectFactory();
 
     //Defaults
-    private static final String TYPE = "A01";
+    private static final String TYPE = "A13";
     private static final String PROCESS_PROCESS_TYPE = "A17";
-    private static final String PROCESS_CLASSIFICATION_TYPE = "A02";
+    private static final String PROCESS_CLASSIFICATION_TYPE = "A01";
     private static final String SENDER_MARKET_ROLE_TYPE = "A08";
     private static final String SENDER_MARKET_CODING_SHEME = "A10";
 //    private static final String RECEIVER_MARKET_ROLE_MRID = "8716867999983";
@@ -30,8 +30,8 @@ public class ScheduleMarketMapper {
     private static final String DOMAIN_MRID = "10YNL----------L";
 
     //TimeSeries Defaults
-    private static final String BUSINESS_TYPE = "A02";
-    private static final String OBJECT_AGGREGATION = "A03";
+    private static final String BUSINESS_TYPE = "A03";
+    private static final String OBJECT_AGGREGATION = "A04";
     private static final String MEASURE_UNIT = "KWH";
     private static final String CURVE_TYPE = "A01";
     private static final String PRODUCT = "8716867000030";
@@ -39,7 +39,7 @@ public class ScheduleMarketMapper {
     //SeriesPeriod Defaults
     private static final String RESOLUTION = "PT15M";
 
-    public ScheduleMarketMapper(ApplicationConfiguration configuration){
+    public ScheduleMarketMapperForeign(ApplicationConfiguration configuration){
         this.configuration = configuration;
     }
 
@@ -95,24 +95,19 @@ public class ScheduleMarketMapper {
         output.setCurveType(CURVE_TYPE);
         output.setProduct(PRODUCT);
 
-
-
         //Map variables
         //MRID can be random
         output.setMRID(UUID.randomUUID().toString().replace("-", ""));
-        //InDomain & OutDomain optional
-        if(input.getInDomainMRID() != null && StringUtils.isNotBlank(input.getInDomainMRID().getValue())){
-            AreaIDString inDomain = objectFactory.createAreaIDString();
-            inDomain.setValue(input.getInDomainMRID().getValue());
-            inDomain.setCodingScheme("A01");
-            output.setInDomainMRID(inDomain);
-        }
-        if(input.getOutDomainMRID() != null && StringUtils.isNotBlank(input.getOutDomainMRID().getValue())){
-            AreaIDString outDomain = objectFactory.createAreaIDString();
-            outDomain.setValue(input.getOutDomainMRID().getValue());
-            outDomain.setCodingScheme("A01");
-            output.setOutDomainMRID(outDomain);
-        }
+        AreaIDString inDomain = objectFactory.createAreaIDString();
+        inDomain.setValue(input.getInDomainMRID().getValue());
+        inDomain.setCodingScheme("A01");
+        output.setInDomainMRID(inDomain);
+
+        AreaIDString outDomain = objectFactory.createAreaIDString();
+        outDomain.setValue(input.getOutDomainMRID().getValue());
+        outDomain.setCodingScheme("A01");
+        output.setOutDomainMRID(outDomain);
+
         PartyIDString inMarketParticipant = objectFactory.createPartyIDString();
         inMarketParticipant.setCodingScheme("A10");
         inMarketParticipant.setValue(input.getInMarketParticipantMRID().getValue());
@@ -123,7 +118,6 @@ public class ScheduleMarketMapper {
         outMarketParticipant.setValue(input.getOutMarketParticipantMRID().getValue());
         output.setOutMarketParticipantMRID(outMarketParticipant);
 
-        //MarketAgreement is optional
         output.setMarketAgreementMRID(input.getMarketAgreementMRID());
 
         output.setVersion(input.getVersion());

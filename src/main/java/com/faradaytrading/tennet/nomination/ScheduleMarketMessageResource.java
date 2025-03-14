@@ -3,15 +3,20 @@ package com.faradaytrading.tennet.nomination;
 import _351.iec62325.tc57wg16._451_1.acknowledgementdocument._7._0.AcknowledgementMarketDocument;
 import _351.iec62325.tc57wg16._451_2.scheduledocument._5._0.ScheduleMarketDocument;
 import com.faradaytrading.tennet.config.ApplicationConfiguration;
+import com.faradaytrading.tennet.exception.UnrecoverableException;
 import com.faradaytrading.tennet.mapper.ScheduleMarketMapper;
+import com.faradaytrading.tennet.mapper.ScheduleMarketMapperForeign;
 import com.faradaytrading.tennet.message.ErrorResponse;
+import com.faradaytrading.tennet.message.common.*;
 import com.faradaytrading.tennet.message.schedulemarket.ScheduleMarketMessage;
+import com.faradaytrading.tennet.message.schedulemarket.TimeSeries;
 import com.faradaytrading.tennet.services.nomination.GetReportingInformationService;
 import com.faradaytrading.tennet.services.nomination.SendScheduleService;
 import com.faradaytrading.tennet.transformer.IsAliveTransformer;
 import com.faradaytrading.tennet.transformer.MessageAddressingTransformer;
 import com.faradaytrading.tennet.transformer.MessageRequestTransformer;
 import com.faradaytrading.tennet.utils.XmlUtils;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.tennet.cdm.tennet.tennetservice.message.v2.IsAliveRequestMessage;
 import eu.tennet.cdm.tennet.tennetservice.message.v2.IsAliveResponseMessage;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -26,6 +31,9 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.UUID;
 
 @ApplicationScoped
@@ -39,9 +47,59 @@ public class ScheduleMarketMessageResource {
     MessageRequestTransformer messageRequestTransformer;
 
     ScheduleMarketMapper scheduleMarketMapper;
+    ScheduleMarketMapperForeign scheduleMarketMapperForeign;
 
     SendScheduleService sendScheduleService;
     GetReportingInformationService getReportingInformationService;
+
+    public static void main(String[] args) {
+        ScheduleMarketMessage scheduleMarketMessage = new ScheduleMarketMessage();
+        scheduleMarketMessage.setRevisionNumber("1");
+        scheduleMarketMessage.setMRID(UUID.randomUUID().toString().replace("-", ""));
+        PartyIDString partyIDString = new PartyIDString();
+        partyIDString.setValue("8716867111163");
+        scheduleMarketMessage.setReceiverMarketParticipantMRID(partyIDString);
+        ESMPDateTimeInterval timeInterval = new ESMPDateTimeInterval();
+        timeInterval.setStart("2024-03-30T23:00Z");
+        timeInterval.setEnd("2024-03-31T22:00Z");
+        scheduleMarketMessage.setScheduleTimePeriodTimeInterval(timeInterval);
+
+        TimeSeries ts = new TimeSeries();
+
+        ts.setBusinessType("A20");
+
+        ts.setMRID(UUID.randomUUID().toString().replace("-", ""));
+        AreaIDString in = new AreaIDString();
+        in.setValue("8720844058549");
+        ts.setInDomainMRID(in);
+
+        AreaIDString out = new AreaIDString();
+        out.setValue("8716867444223");
+        ts.setOutDomainMRID(out);
+
+        SeriesPeriod sp = new SeriesPeriod();
+        sp.setTimeInterval(timeInterval);
+
+        for(int i = 1; i <= 92; i++){
+            Point point = new Point();
+            point.setPosition(i);
+            point.setQuantity(BigDecimal.valueOf((int) ((Math.random() * (30 - 5)) + 5)).setScale(0));
+            sp.getPoints().add(point);
+        }
+
+        ts.getPeriods().add(sp);
+
+        scheduleMarketMessage.getTimeSeries().add(ts);
+
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String s = mapper.writeValueAsString(scheduleMarketMessage);
+            System.out.println(s);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
     @Inject
     public ScheduleMarketMessageResource(ApplicationConfiguration configuration){
@@ -51,7 +109,8 @@ public class ScheduleMarketMessageResource {
         this.messageAddressingTransformer = new MessageAddressingTransformer();
         this.messageRequestTransformer = new MessageRequestTransformer();
 
-        this.scheduleMarketMapper = new ScheduleMarketMapper();
+        this.scheduleMarketMapper = new ScheduleMarketMapper(configuration);
+        this.scheduleMarketMapperForeign = new ScheduleMarketMapperForeign(configuration);
 
         this.sendScheduleService = new SendScheduleService(configuration);
         this.getReportingInformationService = new GetReportingInformationService(configuration);
@@ -86,6 +145,8 @@ public class ScheduleMarketMessageResource {
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
             ScheduleMarketDocument document = scheduleMarketMapper.map(scheduleMarketMessage);
 
+            writeFile(XmlUtils.marshal(document, ScheduleMarketDocument.class), "schedule", document.getMRID(), document.getRevisionNumber());
+
             String response = sendScheduleService.sendSchedule(document, messageAddressing);
             return Response.ok(XmlUtils.prettyPrintXml(response)).build();
         } catch (Exception e) {
@@ -105,8 +166,11 @@ public class ScheduleMarketMessageResource {
             String technicalMessageId = UUID.randomUUID().toString();
             String contentType = "FOREIGN_ENERGY_PROGRAM";
             String correlationId = UUID.randomUUID().toString();
+            ObjectMapper mapper = new ObjectMapper();
+            writeJSON(mapper.writeValueAsString(scheduleMarketMessage), "schedule/foreign", technicalMessageId, "");
             MessageAddressing messageAddressing = messageAddressingTransformer.createMessageAddressing(carrierId, technicalMessageId, contentType, senderId, receiverId, correlationId);
-            ScheduleMarketDocument document = scheduleMarketMapper.map(scheduleMarketMessage);
+            ScheduleMarketDocument document = scheduleMarketMapperForeign.map(scheduleMarketMessage);
+            writeFile(XmlUtils.marshal(document, ScheduleMarketDocument.class), "schedule/foreign", document.getMRID(), document.getRevisionNumber());
 
             String response = sendScheduleService.sendSchedule(document, messageAddressing);
             return Response.ok(XmlUtils.prettyPrintXml(response)).build();
@@ -157,6 +221,32 @@ public class ScheduleMarketMessageResource {
         } catch (Exception e) {
             LOGGER.error("Something went wrong: {}", e.getMessage(), e);
             return Response.status(400).entity(new ErrorResponse(400, e.getMessage())).build();
+        }
+    }
+
+
+
+    private void writeFile(String file, String archiveKey, String documentName, String revision) throws UnrecoverableException {
+        try {
+            String path = "%s/%s".formatted(configuration.fileArchiveBaseDir(), archiveKey);
+            String fileName = "%s-%s.xml".formatted(documentName, revision);
+            java.nio.file.Path filePath = Paths.get(path, fileName);
+            Files.createDirectories(filePath.getParent());
+            Files.write(filePath, file.getBytes());
+        } catch (Exception e){
+            throw new UnrecoverableException(e);
+        }
+    }
+
+    private void writeJSON(String file, String archiveKey, String documentName, String revision) throws UnrecoverableException {
+        try {
+            String path = "%s/%s".formatted(configuration.fileArchiveBaseDir(), archiveKey);
+            String fileName = "%s-%s.json".formatted(documentName, revision);
+            java.nio.file.Path filePath = Paths.get(path, fileName);
+            Files.createDirectories(filePath.getParent());
+            Files.write(filePath, file.getBytes());
+        } catch (Exception e){
+            throw new UnrecoverableException(e);
         }
     }
     

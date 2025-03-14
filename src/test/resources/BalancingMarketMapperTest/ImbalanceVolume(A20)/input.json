@@ -1,109 +1,2433 @@
 {
-  "revisionNumber": "1",
+  "mRID": "450ec69d0aa94c60899c067405f8635b",
+  "revisionNumber": "3",
   "receiver_MarketParticipant.mRID": {
-    "value": "1234567890123"
+    "value": "8716867111163"
   },
-  "docStatus": {
-    "value": "A01"
-  },
-  "allocationDecision_DateAndOrTime.dateTime": "2022-04-03T12:41:47Z",
-  "period.timeInterval": {
-    "start": "2022-04-01T22:00Z",
-    "end": "2022-04-02T22:00Z"
+  "schedule_Time_Period.timeInterval": {
+    "start": "2025-03-07T23:00Z",
+    "end": "2025-03-08T23:00Z"
   },
   "TimeSeries": [
     {
+      "version": "2",
       "businessType": "A20",
-      "acquiring_Domain.mRID": {
-        "codingScheme": "A01",
-        "value": "10YNL----------L"
+      "in_MarketParticipant.mRID": {
+        "value": "8720844058549"
       },
-      "flowDirection.direction": "A01",
+      "out_MarketParticipant.mRID": {
+        "value": "8716867444216"
+      },
       "Period": [
         {
           "timeInterval": {
-            "start": "2022-04-01T22:00Z",
-            "end": "2022-04-02T22:00Z"
+            "start": "2025-03-07T23:00Z",
+            "end": "2025-03-08T23:00Z"
           },
           "Point": [
             {
               "position": "1",
-              "quantity": "433.0",
-              "Financial_Price": [
-                {
-                  "amount": "1354.21",
-                  "direction": "A02"
-                }
-              ]
+              "quantity": "20000"
             },
             {
               "position": "2",
-              "quantity": "0.0",
-              "Financial_Price": [
-                {
-                  "amount": "0.00",
-                  "direction": "A01"
-                }
-              ]
+              "quantity": "20000"
+            },
+            {
+              "position": "3",
+              "quantity": "20000"
+            },
+            {
+              "position": "4",
+              "quantity": "20000"
+            },
+            {
+              "position": "5",
+              "quantity": "20000"
+            },
+            {
+              "position": "6",
+              "quantity": "20000"
+            },
+            {
+              "position": "7",
+              "quantity": "20000"
+            },
+            {
+              "position": "8",
+              "quantity": "20000"
+            },
+            {
+              "position": "9",
+              "quantity": "20000"
+            },
+            {
+              "position": "10",
+              "quantity": "20000"
+            },
+            {
+              "position": "11",
+              "quantity": "20000"
+            },
+            {
+              "position": "12",
+              "quantity": "20000"
+            },
+            {
+              "position": "13",
+              "quantity": "10000"
+            },
+            {
+              "position": "14",
+              "quantity": "10000"
+            },
+            {
+              "position": "15",
+              "quantity": "10000"
+            },
+            {
+              "position": "16",
+              "quantity": "10000"
+            },
+            {
+              "position": "17",
+              "quantity": "10000"
+            },
+            {
+              "position": "18",
+              "quantity": "10000"
+            },
+            {
+              "position": "19",
+              "quantity": "10000"
+            },
+            {
+              "position": "20",
+              "quantity": "10000"
+            },
+            {
+              "position": "21",
+              "quantity": "10000"
+            },
+            {
+              "position": "22",
+              "quantity": "10000"
+            },
+            {
+              "position": "23",
+              "quantity": "10000"
+            },
+            {
+              "position": "24",
+              "quantity": "10000"
+            },
+            {
+              "position": "25",
+              "quantity": "0"
+            },
+            {
+              "position": "26",
+              "quantity": "0"
+            },
+            {
+              "position": "27",
+              "quantity": "0"
+            },
+            {
+              "position": "28",
+              "quantity": "0"
+            },
+            {
+              "position": "29",
+              "quantity": "0"
+            },
+            {
+              "position": "30",
+              "quantity": "0"
+            },
+            {
+              "position": "31",
+              "quantity": "0"
+            },
+            {
+              "position": "32",
+              "quantity": "0"
+            },
+            {
+              "position": "33",
+              "quantity": "0"
+            },
+            {
+              "position": "34",
+              "quantity": "0"
+            },
+            {
+              "position": "35",
+              "quantity": "0"
+            },
+            {
+              "position": "36",
+              "quantity": "0"
+            },
+            {
+              "position": "37",
+              "quantity": "0"
+            },
+            {
+              "position": "38",
+              "quantity": "0"
+            },
+            {
+              "position": "39",
+              "quantity": "0"
+            },
+            {
+              "position": "40",
+              "quantity": "0"
+            },
+            {
+              "position": "41",
+              "quantity": "0"
+            },
+            {
+              "position": "42",
+              "quantity": "0"
+            },
+            {
+              "position": "43",
+              "quantity": "0"
+            },
+            {
+              "position": "44",
+              "quantity": "0"
+            },
+            {
+              "position": "45",
+              "quantity": "0"
+            },
+            {
+              "position": "46",
+              "quantity": "0"
+            },
+            {
+              "position": "47",
+              "quantity": "0"
+            },
+            {
+              "position": "48",
+              "quantity": "0"
+            },
+            {
+              "position": "49",
+              "quantity": "0"
+            },
+            {
+              "position": "50",
+              "quantity": "0"
+            },
+            {
+              "position": "51",
+              "quantity": "0"
+            },
+            {
+              "position": "52",
+              "quantity": "0"
+            },
+            {
+              "position": "53",
+              "quantity": "0"
+            },
+            {
+              "position": "54",
+              "quantity": "0"
+            },
+            {
+              "position": "55",
+              "quantity": "0"
+            },
+            {
+              "position": "56",
+              "quantity": "0"
+            },
+            {
+              "position": "57",
+              "quantity": "0"
+            },
+            {
+              "position": "58",
+              "quantity": "0"
+            },
+            {
+              "position": "59",
+              "quantity": "0"
+            },
+            {
+              "position": "60",
+              "quantity": "0"
+            },
+            {
+              "position": "61",
+              "quantity": "0"
+            },
+            {
+              "position": "62",
+              "quantity": "0"
+            },
+            {
+              "position": "63",
+              "quantity": "0"
+            },
+            {
+              "position": "64",
+              "quantity": "0"
+            },
+            {
+              "position": "65",
+              "quantity": "0"
+            },
+            {
+              "position": "66",
+              "quantity": "0"
+            },
+            {
+              "position": "67",
+              "quantity": "0"
+            },
+            {
+              "position": "68",
+              "quantity": "0"
+            },
+            {
+              "position": "69",
+              "quantity": "0"
+            },
+            {
+              "position": "70",
+              "quantity": "0"
+            },
+            {
+              "position": "71",
+              "quantity": "0"
+            },
+            {
+              "position": "72",
+              "quantity": "0"
+            },
+            {
+              "position": "73",
+              "quantity": "10000"
+            },
+            {
+              "position": "74",
+              "quantity": "10000"
+            },
+            {
+              "position": "75",
+              "quantity": "10000"
+            },
+            {
+              "position": "76",
+              "quantity": "10000"
+            },
+            {
+              "position": "77",
+              "quantity": "10000"
+            },
+            {
+              "position": "78",
+              "quantity": "10000"
+            },
+            {
+              "position": "79",
+              "quantity": "10000"
+            },
+            {
+              "position": "80",
+              "quantity": "10000"
+            },
+            {
+              "position": "81",
+              "quantity": "10000"
+            },
+            {
+              "position": "82",
+              "quantity": "10000"
+            },
+            {
+              "position": "83",
+              "quantity": "10000"
+            },
+            {
+              "position": "84",
+              "quantity": "10000"
+            },
+            {
+              "position": "85",
+              "quantity": "20000"
+            },
+            {
+              "position": "86",
+              "quantity": "20000"
+            },
+            {
+              "position": "87",
+              "quantity": "20000"
+            },
+            {
+              "position": "88",
+              "quantity": "20000"
+            },
+            {
+              "position": "89",
+              "quantity": "20000"
+            },
+            {
+              "position": "90",
+              "quantity": "20000"
+            },
+            {
+              "position": "91",
+              "quantity": "20000"
+            },
+            {
+              "position": "92",
+              "quantity": "20000"
+            },
+            {
+              "position": "93",
+              "quantity": "20000"
+            },
+            {
+              "position": "94",
+              "quantity": "20000"
+            },
+            {
+              "position": "95",
+              "quantity": "20000"
             },
             {
               "position": "96",
-              "quantity": "2345.000",
-              "Financial_Price": [
-                {
-                  "amount": "1234.98",
-                  "direction": "A02"
-                }
-              ]
+              "quantity": "20000"
             }
           ]
         }
       ]
     },
     {
+      "version": "2",
       "businessType": "A20",
-      "acquiring_Domain.mRID": {
-        "codingScheme": "A01",
-        "value": "10YNL----------L"
+      "in_MarketParticipant.mRID": {
+        "value": "8716867444216"
       },
-      "flowDirection.direction": "A02",
-      "auction.mRID": "string",
+      "out_MarketParticipant.mRID": {
+        "value": "8720844058549"
+      },
       "Period": [
         {
           "timeInterval": {
-            "start": "2022-04-01T22:00Z",
-            "end": "2022-04-02T22:00Z"
+            "start": "2025-03-07T23:00Z",
+            "end": "2025-03-08T23:00Z"
           },
           "Point": [
             {
               "position": "1",
-              "quantity": "0.0",
-              "Financial_Price": [
-                {
-                  "amount": "0.00",
-                  "direction": "A01"
-                }
-              ]
+              "quantity": "0"
             },
             {
               "position": "2",
-              "quantity": "1234.000",
-              "Financial_Price": [
-                {
-                  "amount": "4022.21",
-                  "direction": "A02"
-                }
-              ]
+              "quantity": "0"
+            },
+            {
+              "position": "3",
+              "quantity": "0"
+            },
+            {
+              "position": "4",
+              "quantity": "0"
+            },
+            {
+              "position": "5",
+              "quantity": "0"
+            },
+            {
+              "position": "6",
+              "quantity": "0"
+            },
+            {
+              "position": "7",
+              "quantity": "0"
+            },
+            {
+              "position": "8",
+              "quantity": "0"
+            },
+            {
+              "position": "9",
+              "quantity": "0"
+            },
+            {
+              "position": "10",
+              "quantity": "0"
+            },
+            {
+              "position": "11",
+              "quantity": "0"
+            },
+            {
+              "position": "12",
+              "quantity": "0"
+            },
+            {
+              "position": "13",
+              "quantity": "0"
+            },
+            {
+              "position": "14",
+              "quantity": "0"
+            },
+            {
+              "position": "15",
+              "quantity": "0"
+            },
+            {
+              "position": "16",
+              "quantity": "0"
+            },
+            {
+              "position": "17",
+              "quantity": "0"
+            },
+            {
+              "position": "18",
+              "quantity": "0"
+            },
+            {
+              "position": "19",
+              "quantity": "0"
+            },
+            {
+              "position": "20",
+              "quantity": "0"
+            },
+            {
+              "position": "21",
+              "quantity": "0"
+            },
+            {
+              "position": "22",
+              "quantity": "0"
+            },
+            {
+              "position": "23",
+              "quantity": "0"
+            },
+            {
+              "position": "24",
+              "quantity": "0"
+            },
+            {
+              "position": "25",
+              "quantity": "0"
+            },
+            {
+              "position": "26",
+              "quantity": "0"
+            },
+            {
+              "position": "27",
+              "quantity": "0"
+            },
+            {
+              "position": "28",
+              "quantity": "0"
+            },
+            {
+              "position": "29",
+              "quantity": "0"
+            },
+            {
+              "position": "30",
+              "quantity": "0"
+            },
+            {
+              "position": "31",
+              "quantity": "0"
+            },
+            {
+              "position": "32",
+              "quantity": "0"
+            },
+            {
+              "position": "33",
+              "quantity": "0"
+            },
+            {
+              "position": "34",
+              "quantity": "0"
+            },
+            {
+              "position": "35",
+              "quantity": "0"
+            },
+            {
+              "position": "36",
+              "quantity": "0"
+            },
+            {
+              "position": "37",
+              "quantity": "10000"
+            },
+            {
+              "position": "38",
+              "quantity": "10000"
+            },
+            {
+              "position": "39",
+              "quantity": "10000"
+            },
+            {
+              "position": "40",
+              "quantity": "10000"
+            },
+            {
+              "position": "41",
+              "quantity": "10000"
+            },
+            {
+              "position": "42",
+              "quantity": "10000"
+            },
+            {
+              "position": "43",
+              "quantity": "10000"
+            },
+            {
+              "position": "44",
+              "quantity": "10000"
+            },
+            {
+              "position": "45",
+              "quantity": "10000"
+            },
+            {
+              "position": "46",
+              "quantity": "10000"
+            },
+            {
+              "position": "47",
+              "quantity": "10000"
+            },
+            {
+              "position": "48",
+              "quantity": "10000"
+            },
+            {
+              "position": "49",
+              "quantity": "10000"
+            },
+            {
+              "position": "50",
+              "quantity": "10000"
+            },
+            {
+              "position": "51",
+              "quantity": "10000"
+            },
+            {
+              "position": "52",
+              "quantity": "10000"
+            },
+            {
+              "position": "53",
+              "quantity": "10000"
+            },
+            {
+              "position": "54",
+              "quantity": "10000"
+            },
+            {
+              "position": "55",
+              "quantity": "10000"
+            },
+            {
+              "position": "56",
+              "quantity": "10000"
+            },
+            {
+              "position": "57",
+              "quantity": "10000"
+            },
+            {
+              "position": "58",
+              "quantity": "10000"
+            },
+            {
+              "position": "59",
+              "quantity": "10000"
+            },
+            {
+              "position": "60",
+              "quantity": "10000"
+            },
+            {
+              "position": "61",
+              "quantity": "0"
+            },
+            {
+              "position": "62",
+              "quantity": "0"
+            },
+            {
+              "position": "63",
+              "quantity": "0"
+            },
+            {
+              "position": "64",
+              "quantity": "0"
+            },
+            {
+              "position": "65",
+              "quantity": "0"
+            },
+            {
+              "position": "66",
+              "quantity": "0"
+            },
+            {
+              "position": "67",
+              "quantity": "0"
+            },
+            {
+              "position": "68",
+              "quantity": "0"
+            },
+            {
+              "position": "69",
+              "quantity": "0"
+            },
+            {
+              "position": "70",
+              "quantity": "0"
+            },
+            {
+              "position": "71",
+              "quantity": "0"
+            },
+            {
+              "position": "72",
+              "quantity": "0"
+            },
+            {
+              "position": "73",
+              "quantity": "0"
+            },
+            {
+              "position": "74",
+              "quantity": "0"
+            },
+            {
+              "position": "75",
+              "quantity": "0"
+            },
+            {
+              "position": "76",
+              "quantity": "0"
+            },
+            {
+              "position": "77",
+              "quantity": "0"
+            },
+            {
+              "position": "78",
+              "quantity": "0"
+            },
+            {
+              "position": "79",
+              "quantity": "0"
+            },
+            {
+              "position": "80",
+              "quantity": "0"
+            },
+            {
+              "position": "81",
+              "quantity": "0"
+            },
+            {
+              "position": "82",
+              "quantity": "0"
+            },
+            {
+              "position": "83",
+              "quantity": "0"
+            },
+            {
+              "position": "84",
+              "quantity": "0"
+            },
+            {
+              "position": "85",
+              "quantity": "0"
+            },
+            {
+              "position": "86",
+              "quantity": "0"
+            },
+            {
+              "position": "87",
+              "quantity": "0"
+            },
+            {
+              "position": "88",
+              "quantity": "0"
+            },
+            {
+              "position": "89",
+              "quantity": "0"
+            },
+            {
+              "position": "90",
+              "quantity": "0"
+            },
+            {
+              "position": "91",
+              "quantity": "0"
+            },
+            {
+              "position": "92",
+              "quantity": "0"
+            },
+            {
+              "position": "93",
+              "quantity": "0"
+            },
+            {
+              "position": "94",
+              "quantity": "0"
+            },
+            {
+              "position": "95",
+              "quantity": "0"
             },
             {
               "position": "96",
-              "quantity": "0.000",
-              "Financial_Price": [
-                {
-                  "amount": "0.00",
-                  "direction": "A02"
-                }
-              ]
+              "quantity": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "1",
+      "businessType": "A20",
+      "in_MarketParticipant.mRID": {
+        "value": "8720844058549"
+      },
+      "out_MarketParticipant.mRID": {
+        "value": "8716867444230"
+      },
+      "Period": [
+        {
+          "timeInterval": {
+            "start": "2025-03-07T23:00Z",
+            "end": "2025-03-08T23:00Z"
+          },
+          "Point": [
+            {
+              "position": "1",
+              "quantity": "0"
+            },
+            {
+              "position": "2",
+              "quantity": "0"
+            },
+            {
+              "position": "3",
+              "quantity": "0"
+            },
+            {
+              "position": "4",
+              "quantity": "0"
+            },
+            {
+              "position": "5",
+              "quantity": "0"
+            },
+            {
+              "position": "6",
+              "quantity": "0"
+            },
+            {
+              "position": "7",
+              "quantity": "0"
+            },
+            {
+              "position": "8",
+              "quantity": "0"
+            },
+            {
+              "position": "9",
+              "quantity": "0"
+            },
+            {
+              "position": "10",
+              "quantity": "0"
+            },
+            {
+              "position": "11",
+              "quantity": "0"
+            },
+            {
+              "position": "12",
+              "quantity": "0"
+            },
+            {
+              "position": "13",
+              "quantity": "0"
+            },
+            {
+              "position": "14",
+              "quantity": "0"
+            },
+            {
+              "position": "15",
+              "quantity": "0"
+            },
+            {
+              "position": "16",
+              "quantity": "0"
+            },
+            {
+              "position": "17",
+              "quantity": "0"
+            },
+            {
+              "position": "18",
+              "quantity": "0"
+            },
+            {
+              "position": "19",
+              "quantity": "0"
+            },
+            {
+              "position": "20",
+              "quantity": "0"
+            },
+            {
+              "position": "21",
+              "quantity": "0"
+            },
+            {
+              "position": "22",
+              "quantity": "0"
+            },
+            {
+              "position": "23",
+              "quantity": "0"
+            },
+            {
+              "position": "24",
+              "quantity": "0"
+            },
+            {
+              "position": "25",
+              "quantity": "0"
+            },
+            {
+              "position": "26",
+              "quantity": "0"
+            },
+            {
+              "position": "27",
+              "quantity": "0"
+            },
+            {
+              "position": "28",
+              "quantity": "0"
+            },
+            {
+              "position": "29",
+              "quantity": "0"
+            },
+            {
+              "position": "30",
+              "quantity": "0"
+            },
+            {
+              "position": "31",
+              "quantity": "0"
+            },
+            {
+              "position": "32",
+              "quantity": "0"
+            },
+            {
+              "position": "33",
+              "quantity": "0"
+            },
+            {
+              "position": "34",
+              "quantity": "0"
+            },
+            {
+              "position": "35",
+              "quantity": "0"
+            },
+            {
+              "position": "36",
+              "quantity": "0"
+            },
+            {
+              "position": "37",
+              "quantity": "0"
+            },
+            {
+              "position": "38",
+              "quantity": "0"
+            },
+            {
+              "position": "39",
+              "quantity": "0"
+            },
+            {
+              "position": "40",
+              "quantity": "0"
+            },
+            {
+              "position": "41",
+              "quantity": "0"
+            },
+            {
+              "position": "42",
+              "quantity": "0"
+            },
+            {
+              "position": "43",
+              "quantity": "0"
+            },
+            {
+              "position": "44",
+              "quantity": "0"
+            },
+            {
+              "position": "45",
+              "quantity": "0"
+            },
+            {
+              "position": "46",
+              "quantity": "0"
+            },
+            {
+              "position": "47",
+              "quantity": "0"
+            },
+            {
+              "position": "48",
+              "quantity": "0"
+            },
+            {
+              "position": "49",
+              "quantity": "0"
+            },
+            {
+              "position": "50",
+              "quantity": "0"
+            },
+            {
+              "position": "51",
+              "quantity": "0"
+            },
+            {
+              "position": "52",
+              "quantity": "0"
+            },
+            {
+              "position": "53",
+              "quantity": "0"
+            },
+            {
+              "position": "54",
+              "quantity": "0"
+            },
+            {
+              "position": "55",
+              "quantity": "0"
+            },
+            {
+              "position": "56",
+              "quantity": "0"
+            },
+            {
+              "position": "57",
+              "quantity": "0"
+            },
+            {
+              "position": "58",
+              "quantity": "0"
+            },
+            {
+              "position": "59",
+              "quantity": "0"
+            },
+            {
+              "position": "60",
+              "quantity": "0"
+            },
+            {
+              "position": "61",
+              "quantity": "0"
+            },
+            {
+              "position": "62",
+              "quantity": "0"
+            },
+            {
+              "position": "63",
+              "quantity": "0"
+            },
+            {
+              "position": "64",
+              "quantity": "0"
+            },
+            {
+              "position": "65",
+              "quantity": "0"
+            },
+            {
+              "position": "66",
+              "quantity": "0"
+            },
+            {
+              "position": "67",
+              "quantity": "0"
+            },
+            {
+              "position": "68",
+              "quantity": "0"
+            },
+            {
+              "position": "69",
+              "quantity": "0"
+            },
+            {
+              "position": "70",
+              "quantity": "0"
+            },
+            {
+              "position": "71",
+              "quantity": "0"
+            },
+            {
+              "position": "72",
+              "quantity": "0"
+            },
+            {
+              "position": "73",
+              "quantity": "0"
+            },
+            {
+              "position": "74",
+              "quantity": "0"
+            },
+            {
+              "position": "75",
+              "quantity": "0"
+            },
+            {
+              "position": "76",
+              "quantity": "0"
+            },
+            {
+              "position": "77",
+              "quantity": "0"
+            },
+            {
+              "position": "78",
+              "quantity": "0"
+            },
+            {
+              "position": "79",
+              "quantity": "0"
+            },
+            {
+              "position": "80",
+              "quantity": "0"
+            },
+            {
+              "position": "81",
+              "quantity": "0"
+            },
+            {
+              "position": "82",
+              "quantity": "0"
+            },
+            {
+              "position": "83",
+              "quantity": "0"
+            },
+            {
+              "position": "84",
+              "quantity": "0"
+            },
+            {
+              "position": "85",
+              "quantity": "0"
+            },
+            {
+              "position": "86",
+              "quantity": "0"
+            },
+            {
+              "position": "87",
+              "quantity": "0"
+            },
+            {
+              "position": "88",
+              "quantity": "0"
+            },
+            {
+              "position": "89",
+              "quantity": "0"
+            },
+            {
+              "position": "90",
+              "quantity": "0"
+            },
+            {
+              "position": "91",
+              "quantity": "0"
+            },
+            {
+              "position": "92",
+              "quantity": "0"
+            },
+            {
+              "position": "93",
+              "quantity": "0"
+            },
+            {
+              "position": "94",
+              "quantity": "0"
+            },
+            {
+              "position": "95",
+              "quantity": "0"
+            },
+            {
+              "position": "96",
+              "quantity": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "1",
+      "businessType": "A20",
+      "in_MarketParticipant.mRID": {
+        "value": "8716867444230"
+      },
+      "out_MarketParticipant.mRID": {
+        "value": "8720844058549"
+      },
+      "Period": [
+        {
+          "timeInterval": {
+            "start": "2025-03-07T23:00Z",
+            "end": "2025-03-08T23:00Z"
+          },
+          "Point": [
+            {
+              "position": "1",
+              "quantity": "25000"
+            },
+            {
+              "position": "2",
+              "quantity": "25000"
+            },
+            {
+              "position": "3",
+              "quantity": "25000"
+            },
+            {
+              "position": "4",
+              "quantity": "25000"
+            },
+            {
+              "position": "5",
+              "quantity": "25000"
+            },
+            {
+              "position": "6",
+              "quantity": "25000"
+            },
+            {
+              "position": "7",
+              "quantity": "25000"
+            },
+            {
+              "position": "8",
+              "quantity": "25000"
+            },
+            {
+              "position": "9",
+              "quantity": "25000"
+            },
+            {
+              "position": "10",
+              "quantity": "25000"
+            },
+            {
+              "position": "11",
+              "quantity": "25000"
+            },
+            {
+              "position": "12",
+              "quantity": "25000"
+            },
+            {
+              "position": "13",
+              "quantity": "35000"
+            },
+            {
+              "position": "14",
+              "quantity": "35000"
+            },
+            {
+              "position": "15",
+              "quantity": "35000"
+            },
+            {
+              "position": "16",
+              "quantity": "35000"
+            },
+            {
+              "position": "17",
+              "quantity": "35000"
+            },
+            {
+              "position": "18",
+              "quantity": "35000"
+            },
+            {
+              "position": "19",
+              "quantity": "35000"
+            },
+            {
+              "position": "20",
+              "quantity": "35000"
+            },
+            {
+              "position": "21",
+              "quantity": "35000"
+            },
+            {
+              "position": "22",
+              "quantity": "35000"
+            },
+            {
+              "position": "23",
+              "quantity": "35000"
+            },
+            {
+              "position": "24",
+              "quantity": "35000"
+            },
+            {
+              "position": "25",
+              "quantity": "25000"
+            },
+            {
+              "position": "26",
+              "quantity": "25000"
+            },
+            {
+              "position": "27",
+              "quantity": "25000"
+            },
+            {
+              "position": "28",
+              "quantity": "25000"
+            },
+            {
+              "position": "29",
+              "quantity": "25000"
+            },
+            {
+              "position": "30",
+              "quantity": "25000"
+            },
+            {
+              "position": "31",
+              "quantity": "25000"
+            },
+            {
+              "position": "32",
+              "quantity": "25000"
+            },
+            {
+              "position": "33",
+              "quantity": "25000"
+            },
+            {
+              "position": "34",
+              "quantity": "25000"
+            },
+            {
+              "position": "35",
+              "quantity": "25000"
+            },
+            {
+              "position": "36",
+              "quantity": "25000"
+            },
+            {
+              "position": "37",
+              "quantity": "25000"
+            },
+            {
+              "position": "38",
+              "quantity": "25000"
+            },
+            {
+              "position": "39",
+              "quantity": "25000"
+            },
+            {
+              "position": "40",
+              "quantity": "25000"
+            },
+            {
+              "position": "41",
+              "quantity": "25000"
+            },
+            {
+              "position": "42",
+              "quantity": "25000"
+            },
+            {
+              "position": "43",
+              "quantity": "25000"
+            },
+            {
+              "position": "44",
+              "quantity": "25000"
+            },
+            {
+              "position": "45",
+              "quantity": "25000"
+            },
+            {
+              "position": "46",
+              "quantity": "25000"
+            },
+            {
+              "position": "47",
+              "quantity": "25000"
+            },
+            {
+              "position": "48",
+              "quantity": "25000"
+            },
+            {
+              "position": "49",
+              "quantity": "35000"
+            },
+            {
+              "position": "50",
+              "quantity": "35000"
+            },
+            {
+              "position": "51",
+              "quantity": "35000"
+            },
+            {
+              "position": "52",
+              "quantity": "35000"
+            },
+            {
+              "position": "53",
+              "quantity": "35000"
+            },
+            {
+              "position": "54",
+              "quantity": "35000"
+            },
+            {
+              "position": "55",
+              "quantity": "35000"
+            },
+            {
+              "position": "56",
+              "quantity": "35000"
+            },
+            {
+              "position": "57",
+              "quantity": "35000"
+            },
+            {
+              "position": "58",
+              "quantity": "35000"
+            },
+            {
+              "position": "59",
+              "quantity": "35000"
+            },
+            {
+              "position": "60",
+              "quantity": "35000"
+            },
+            {
+              "position": "61",
+              "quantity": "45000"
+            },
+            {
+              "position": "62",
+              "quantity": "45000"
+            },
+            {
+              "position": "63",
+              "quantity": "45000"
+            },
+            {
+              "position": "64",
+              "quantity": "45000"
+            },
+            {
+              "position": "65",
+              "quantity": "45000"
+            },
+            {
+              "position": "66",
+              "quantity": "45000"
+            },
+            {
+              "position": "67",
+              "quantity": "45000"
+            },
+            {
+              "position": "68",
+              "quantity": "45000"
+            },
+            {
+              "position": "69",
+              "quantity": "45000"
+            },
+            {
+              "position": "70",
+              "quantity": "45000"
+            },
+            {
+              "position": "71",
+              "quantity": "45000"
+            },
+            {
+              "position": "72",
+              "quantity": "45000"
+            },
+            {
+              "position": "73",
+              "quantity": "65000"
+            },
+            {
+              "position": "74",
+              "quantity": "65000"
+            },
+            {
+              "position": "75",
+              "quantity": "65000"
+            },
+            {
+              "position": "76",
+              "quantity": "65000"
+            },
+            {
+              "position": "77",
+              "quantity": "65000"
+            },
+            {
+              "position": "78",
+              "quantity": "65000"
+            },
+            {
+              "position": "79",
+              "quantity": "65000"
+            },
+            {
+              "position": "80",
+              "quantity": "65000"
+            },
+            {
+              "position": "81",
+              "quantity": "65000"
+            },
+            {
+              "position": "82",
+              "quantity": "65000"
+            },
+            {
+              "position": "83",
+              "quantity": "65000"
+            },
+            {
+              "position": "84",
+              "quantity": "65000"
+            },
+            {
+              "position": "85",
+              "quantity": "65000"
+            },
+            {
+              "position": "86",
+              "quantity": "65000"
+            },
+            {
+              "position": "87",
+              "quantity": "65000"
+            },
+            {
+              "position": "88",
+              "quantity": "65000"
+            },
+            {
+              "position": "89",
+              "quantity": "65000"
+            },
+            {
+              "position": "90",
+              "quantity": "65000"
+            },
+            {
+              "position": "91",
+              "quantity": "65000"
+            },
+            {
+              "position": "92",
+              "quantity": "65000"
+            },
+            {
+              "position": "93",
+              "quantity": "65000"
+            },
+            {
+              "position": "94",
+              "quantity": "65000"
+            },
+            {
+              "position": "95",
+              "quantity": "65000"
+            },
+            {
+              "position": "96",
+              "quantity": "65000"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "1",
+      "businessType": "A20",
+      "in_MarketParticipant.mRID": {
+        "value": "8720844058549"
+      },
+      "out_MarketParticipant.mRID": {
+        "value": "8716867444247"
+      },
+      "Period": [
+        {
+          "timeInterval": {
+            "start": "2025-03-07T23:00Z",
+            "end": "2025-03-08T23:00Z"
+          },
+          "Point": [
+            {
+              "position": "1",
+              "quantity": "13500"
+            },
+            {
+              "position": "2",
+              "quantity": "13500"
+            },
+            {
+              "position": "3",
+              "quantity": "13500"
+            },
+            {
+              "position": "4",
+              "quantity": "13500"
+            },
+            {
+              "position": "5",
+              "quantity": "13500"
+            },
+            {
+              "position": "6",
+              "quantity": "13500"
+            },
+            {
+              "position": "7",
+              "quantity": "13500"
+            },
+            {
+              "position": "8",
+              "quantity": "13500"
+            },
+            {
+              "position": "9",
+              "quantity": "13500"
+            },
+            {
+              "position": "10",
+              "quantity": "13500"
+            },
+            {
+              "position": "11",
+              "quantity": "13500"
+            },
+            {
+              "position": "12",
+              "quantity": "13500"
+            },
+            {
+              "position": "13",
+              "quantity": "13500"
+            },
+            {
+              "position": "14",
+              "quantity": "13500"
+            },
+            {
+              "position": "15",
+              "quantity": "13500"
+            },
+            {
+              "position": "16",
+              "quantity": "13500"
+            },
+            {
+              "position": "17",
+              "quantity": "13500"
+            },
+            {
+              "position": "18",
+              "quantity": "13500"
+            },
+            {
+              "position": "19",
+              "quantity": "13500"
+            },
+            {
+              "position": "20",
+              "quantity": "13500"
+            },
+            {
+              "position": "21",
+              "quantity": "13500"
+            },
+            {
+              "position": "22",
+              "quantity": "13500"
+            },
+            {
+              "position": "23",
+              "quantity": "13500"
+            },
+            {
+              "position": "24",
+              "quantity": "13500"
+            },
+            {
+              "position": "25",
+              "quantity": "0"
+            },
+            {
+              "position": "26",
+              "quantity": "0"
+            },
+            {
+              "position": "27",
+              "quantity": "0"
+            },
+            {
+              "position": "28",
+              "quantity": "0"
+            },
+            {
+              "position": "29",
+              "quantity": "0"
+            },
+            {
+              "position": "30",
+              "quantity": "0"
+            },
+            {
+              "position": "31",
+              "quantity": "0"
+            },
+            {
+              "position": "32",
+              "quantity": "0"
+            },
+            {
+              "position": "33",
+              "quantity": "0"
+            },
+            {
+              "position": "34",
+              "quantity": "0"
+            },
+            {
+              "position": "35",
+              "quantity": "0"
+            },
+            {
+              "position": "36",
+              "quantity": "0"
+            },
+            {
+              "position": "37",
+              "quantity": "27500"
+            },
+            {
+              "position": "38",
+              "quantity": "27500"
+            },
+            {
+              "position": "39",
+              "quantity": "27500"
+            },
+            {
+              "position": "40",
+              "quantity": "27500"
+            },
+            {
+              "position": "41",
+              "quantity": "27500"
+            },
+            {
+              "position": "42",
+              "quantity": "27500"
+            },
+            {
+              "position": "43",
+              "quantity": "27500"
+            },
+            {
+              "position": "44",
+              "quantity": "27500"
+            },
+            {
+              "position": "45",
+              "quantity": "27500"
+            },
+            {
+              "position": "46",
+              "quantity": "27500"
+            },
+            {
+              "position": "47",
+              "quantity": "27500"
+            },
+            {
+              "position": "48",
+              "quantity": "27500"
+            },
+            {
+              "position": "49",
+              "quantity": "0"
+            },
+            {
+              "position": "50",
+              "quantity": "0"
+            },
+            {
+              "position": "51",
+              "quantity": "0"
+            },
+            {
+              "position": "52",
+              "quantity": "0"
+            },
+            {
+              "position": "53",
+              "quantity": "0"
+            },
+            {
+              "position": "54",
+              "quantity": "0"
+            },
+            {
+              "position": "55",
+              "quantity": "0"
+            },
+            {
+              "position": "56",
+              "quantity": "0"
+            },
+            {
+              "position": "57",
+              "quantity": "0"
+            },
+            {
+              "position": "58",
+              "quantity": "0"
+            },
+            {
+              "position": "59",
+              "quantity": "0"
+            },
+            {
+              "position": "60",
+              "quantity": "0"
+            },
+            {
+              "position": "61",
+              "quantity": "0"
+            },
+            {
+              "position": "62",
+              "quantity": "0"
+            },
+            {
+              "position": "63",
+              "quantity": "0"
+            },
+            {
+              "position": "64",
+              "quantity": "0"
+            },
+            {
+              "position": "65",
+              "quantity": "0"
+            },
+            {
+              "position": "66",
+              "quantity": "0"
+            },
+            {
+              "position": "67",
+              "quantity": "0"
+            },
+            {
+              "position": "68",
+              "quantity": "0"
+            },
+            {
+              "position": "69",
+              "quantity": "0"
+            },
+            {
+              "position": "70",
+              "quantity": "0"
+            },
+            {
+              "position": "71",
+              "quantity": "0"
+            },
+            {
+              "position": "72",
+              "quantity": "0"
+            },
+            {
+              "position": "73",
+              "quantity": "10500"
+            },
+            {
+              "position": "74",
+              "quantity": "10500"
+            },
+            {
+              "position": "75",
+              "quantity": "10500"
+            },
+            {
+              "position": "76",
+              "quantity": "10500"
+            },
+            {
+              "position": "77",
+              "quantity": "10500"
+            },
+            {
+              "position": "78",
+              "quantity": "10500"
+            },
+            {
+              "position": "79",
+              "quantity": "10500"
+            },
+            {
+              "position": "80",
+              "quantity": "10500"
+            },
+            {
+              "position": "81",
+              "quantity": "10500"
+            },
+            {
+              "position": "82",
+              "quantity": "10500"
+            },
+            {
+              "position": "83",
+              "quantity": "10500"
+            },
+            {
+              "position": "84",
+              "quantity": "10500"
+            },
+            {
+              "position": "85",
+              "quantity": "0"
+            },
+            {
+              "position": "86",
+              "quantity": "0"
+            },
+            {
+              "position": "87",
+              "quantity": "0"
+            },
+            {
+              "position": "88",
+              "quantity": "0"
+            },
+            {
+              "position": "89",
+              "quantity": "0"
+            },
+            {
+              "position": "90",
+              "quantity": "0"
+            },
+            {
+              "position": "91",
+              "quantity": "0"
+            },
+            {
+              "position": "92",
+              "quantity": "0"
+            },
+            {
+              "position": "93",
+              "quantity": "0"
+            },
+            {
+              "position": "94",
+              "quantity": "0"
+            },
+            {
+              "position": "95",
+              "quantity": "0"
+            },
+            {
+              "position": "96",
+              "quantity": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "1",
+      "businessType": "A20",
+      "in_MarketParticipant.mRID": {
+        "value": "8716867444247"
+      },
+      "out_MarketParticipant.mRID": {
+        "value": "8720844058549"
+      },
+      "Period": [
+        {
+          "timeInterval": {
+            "start": "2025-03-07T23:00Z",
+            "end": "2025-03-08T23:00Z"
+          },
+          "Point": [
+            {
+              "position": "1",
+              "quantity": "0"
+            },
+            {
+              "position": "2",
+              "quantity": "0"
+            },
+            {
+              "position": "3",
+              "quantity": "0"
+            },
+            {
+              "position": "4",
+              "quantity": "0"
+            },
+            {
+              "position": "5",
+              "quantity": "0"
+            },
+            {
+              "position": "6",
+              "quantity": "0"
+            },
+            {
+              "position": "7",
+              "quantity": "0"
+            },
+            {
+              "position": "8",
+              "quantity": "0"
+            },
+            {
+              "position": "9",
+              "quantity": "0"
+            },
+            {
+              "position": "10",
+              "quantity": "0"
+            },
+            {
+              "position": "11",
+              "quantity": "0"
+            },
+            {
+              "position": "12",
+              "quantity": "0"
+            },
+            {
+              "position": "13",
+              "quantity": "0"
+            },
+            {
+              "position": "14",
+              "quantity": "0"
+            },
+            {
+              "position": "15",
+              "quantity": "0"
+            },
+            {
+              "position": "16",
+              "quantity": "0"
+            },
+            {
+              "position": "17",
+              "quantity": "0"
+            },
+            {
+              "position": "18",
+              "quantity": "0"
+            },
+            {
+              "position": "19",
+              "quantity": "0"
+            },
+            {
+              "position": "20",
+              "quantity": "0"
+            },
+            {
+              "position": "21",
+              "quantity": "0"
+            },
+            {
+              "position": "22",
+              "quantity": "0"
+            },
+            {
+              "position": "23",
+              "quantity": "0"
+            },
+            {
+              "position": "24",
+              "quantity": "0"
+            },
+            {
+              "position": "25",
+              "quantity": "22500"
+            },
+            {
+              "position": "26",
+              "quantity": "22500"
+            },
+            {
+              "position": "27",
+              "quantity": "22500"
+            },
+            {
+              "position": "28",
+              "quantity": "22500"
+            },
+            {
+              "position": "29",
+              "quantity": "22500"
+            },
+            {
+              "position": "30",
+              "quantity": "22500"
+            },
+            {
+              "position": "31",
+              "quantity": "22500"
+            },
+            {
+              "position": "32",
+              "quantity": "22500"
+            },
+            {
+              "position": "33",
+              "quantity": "22500"
+            },
+            {
+              "position": "34",
+              "quantity": "22500"
+            },
+            {
+              "position": "35",
+              "quantity": "22500"
+            },
+            {
+              "position": "36",
+              "quantity": "22500"
+            },
+            {
+              "position": "37",
+              "quantity": "0"
+            },
+            {
+              "position": "38",
+              "quantity": "0"
+            },
+            {
+              "position": "39",
+              "quantity": "0"
+            },
+            {
+              "position": "40",
+              "quantity": "0"
+            },
+            {
+              "position": "41",
+              "quantity": "0"
+            },
+            {
+              "position": "42",
+              "quantity": "0"
+            },
+            {
+              "position": "43",
+              "quantity": "0"
+            },
+            {
+              "position": "44",
+              "quantity": "0"
+            },
+            {
+              "position": "45",
+              "quantity": "0"
+            },
+            {
+              "position": "46",
+              "quantity": "0"
+            },
+            {
+              "position": "47",
+              "quantity": "0"
+            },
+            {
+              "position": "48",
+              "quantity": "0"
+            },
+            {
+              "position": "49",
+              "quantity": "25500"
+            },
+            {
+              "position": "50",
+              "quantity": "25500"
+            },
+            {
+              "position": "51",
+              "quantity": "25500"
+            },
+            {
+              "position": "52",
+              "quantity": "25500"
+            },
+            {
+              "position": "53",
+              "quantity": "25500"
+            },
+            {
+              "position": "54",
+              "quantity": "25500"
+            },
+            {
+              "position": "55",
+              "quantity": "25500"
+            },
+            {
+              "position": "56",
+              "quantity": "25500"
+            },
+            {
+              "position": "57",
+              "quantity": "25500"
+            },
+            {
+              "position": "58",
+              "quantity": "25500"
+            },
+            {
+              "position": "59",
+              "quantity": "25500"
+            },
+            {
+              "position": "60",
+              "quantity": "25500"
+            },
+            {
+              "position": "61",
+              "quantity": "35250"
+            },
+            {
+              "position": "62",
+              "quantity": "35250"
+            },
+            {
+              "position": "63",
+              "quantity": "35250"
+            },
+            {
+              "position": "64",
+              "quantity": "35250"
+            },
+            {
+              "position": "65",
+              "quantity": "35250"
+            },
+            {
+              "position": "66",
+              "quantity": "35250"
+            },
+            {
+              "position": "67",
+              "quantity": "35250"
+            },
+            {
+              "position": "68",
+              "quantity": "35250"
+            },
+            {
+              "position": "69",
+              "quantity": "35250"
+            },
+            {
+              "position": "70",
+              "quantity": "35250"
+            },
+            {
+              "position": "71",
+              "quantity": "35250"
+            },
+            {
+              "position": "72",
+              "quantity": "35250"
+            },
+            {
+              "position": "73",
+              "quantity": "0"
+            },
+            {
+              "position": "74",
+              "quantity": "0"
+            },
+            {
+              "position": "75",
+              "quantity": "0"
+            },
+            {
+              "position": "76",
+              "quantity": "0"
+            },
+            {
+              "position": "77",
+              "quantity": "0"
+            },
+            {
+              "position": "78",
+              "quantity": "0"
+            },
+            {
+              "position": "79",
+              "quantity": "0"
+            },
+            {
+              "position": "80",
+              "quantity": "0"
+            },
+            {
+              "position": "81",
+              "quantity": "0"
+            },
+            {
+              "position": "82",
+              "quantity": "0"
+            },
+            {
+              "position": "83",
+              "quantity": "0"
+            },
+            {
+              "position": "84",
+              "quantity": "0"
+            },
+            {
+              "position": "85",
+              "quantity": "7500"
+            },
+            {
+              "position": "86",
+              "quantity": "7500"
+            },
+            {
+              "position": "87",
+              "quantity": "7500"
+            },
+            {
+              "position": "88",
+              "quantity": "7500"
+            },
+            {
+              "position": "89",
+              "quantity": "7500"
+            },
+            {
+              "position": "90",
+              "quantity": "7500"
+            },
+            {
+              "position": "91",
+              "quantity": "7500"
+            },
+            {
+              "position": "92",
+              "quantity": "7500"
+            },
+            {
+              "position": "93",
+              "quantity": "7500"
+            },
+            {
+              "position": "94",
+              "quantity": "7500"
+            },
+            {
+              "position": "95",
+              "quantity": "7500"
+            },
+            {
+              "position": "96",
+              "quantity": "7500"
             }
           ]
         }

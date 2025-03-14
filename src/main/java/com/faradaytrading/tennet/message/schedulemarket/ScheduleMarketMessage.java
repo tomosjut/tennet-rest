@@ -42,7 +42,7 @@ public class ScheduleMarketMessage {
     protected ESMPDateTimeInterval scheduleTimePeriodTimeInterval;
 
     @NotNull
-    @JsonProperty("domain.mRID")
+    @JsonProperty("domainMRID")
     protected AreaIDString domainMRID;
 
     @JsonProperty("TimeSeries")
